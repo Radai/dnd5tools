@@ -2,24 +2,16 @@ var race_data = {
 	"dragonborn": {
 		"name": "Dragonborn",
 		"names": {
-			"male": {
-				"Arjhan. Balasar. Bharash, Donaar, Ghesh,
-				Heskan, Kriv, Medrash, Mehen, Nadarr, Pandjed,
-				Patrin, Rhogar, Shamash, Shedinn, Tarhun, Torinn"
-			},
-			"female": {
-				"Akra, Biri, Daar, Farideh, Harann,
-				HaviJar, Jheri, Kava, Korinn, Mishann, NaJa, Perra,
-				Raiann, Sora, Surina, Thava, Uadjit"
-			},
-			"clan": {
-				"Clethtinthiallor, Daardendrian, Delmirev,
-				Drachedandion, Fenkenkabradon, Kepeshkmolik,
-				Kerrhylon, Kimbatuul, Linxakasendalor, Myastan,
-				Nemmonis, Norixius, Ophinshtalajiir, Prexijandilin,
-				Shestendeliath, Turnuroth, Verthisathurgiesh, Yarjerit"
-			}
-		}
+			"male": 
+				"Arjhan. Balasar. Bharash, Donaar, Ghesh, Heskan, Kriv, Medrash, Mehen, Nadarr, Pandjed, Patrin, Rhogar, Shamash, Shedinn, Tarhun, Torinn"
+			,
+			"female": 
+				"Akra, Biri, Daar, Farideh, Harann, HaviJar, Jheri, Kava, Korinn, Mishann, NaJa, Perra, Raiann, Sora, Surina, Thava, Uadjit"
+			,
+			"clan": 
+				"Clethtinthiallor, Daardendrian, Delmirev, Drachedandion, Fenkenkabradon, Kepeshkmolik, Kerrhylon, Kimbatuul, Linxakasendalor, Myastan, Nemmonis, Norixius, Ophinshtalajiir, Prexijandilin, Shestendeliath, Turnuroth, Verthisathurgiesh, Yarjerit"
+			
+		},
 		"stats": {
 			"strength": 2,
 			"charisma": 1
@@ -30,19 +22,9 @@ var race_data = {
 	"dwarf": {
 		"name": "Dwarf",
 		"names": {
-			"male": "Adrik, Alberich, Baern, Barendd, Brottor,
-					Bruenor, Oain, Oarrak, Oelg, Eberk, Einkil, Fargrim,
-					Flint, Gardain, Harbek, Kildrak, Morgran, Orsik,
-					Oskar, Rangrim, Rurik, Taklinn, Thoradin, Thorin,
-					Tordek, Traubon, Travok, Ulfgar, Veit, Vondal",
-			"female": "Amber, Artin, Audhild, Bardryn,
-					Oagnal, Oiesa, Eldeth, Falkrunn, Finellen, Gunnloda,
-					Gurdis, Helja, Hlin, Kathra, Kristryd, lide, Liftrasa,
-					Mardred, Riswynn, Sannl, Torbera, Torgga, Vistra",
-			"clan": "Balderk, Battlehammer, Brawnanvil,
-					Oankil, Fireforge, Frostbeard, Gorunn, Holderhek,
-					Ironfist, Loderr, Lutgehr, Rumnaheim, Strakeln,
-					Torunn, Ungart"
+			"male": "Adrik, Alberich, Baern, Barendd, Brottor, Bruenor, Oain, Oarrak, Oelg, Eberk, Einkil, Fargrim, Flint, Gardain, Harbek, Kildrak, Morgran, Orsik, Oskar, Rangrim, Rurik, Taklinn, Thoradin, Thorin, Tordek, Traubon, Travok, Ulfgar, Veit, Vondal",
+			"female": "Amber, Artin, Audhild, Bardryn, Oagnal, Oiesa, Eldeth, Falkrunn, Finellen, Gunnloda, Gurdis, Helja, Hlin, Kathra, Kristryd, lide, Liftrasa, Mardred, Riswynn, Sannl, Torbera, Torgga, Vistra",
+			"clan": "Balderk, Battlehammer, Brawnanvil, Oankil, Fireforge, Frostbeard, Gorunn, Holderhek, Ironfist, Loderr, Lutgehr, Rumnaheim, Strakeln, Torunn, Ungart"
 		},
 		"stats": {
 			"constitution": 2
@@ -67,24 +49,10 @@ var race_data = {
 	"elf": {
 		"name": "Elf",
 		"names": {
-			"male": "Adran, Aelar, Aramil, Arannis,
-					Aust, Beiro, Berrian, Carrie, Enialis, Erdan, Erevan,
-					Galinndan, Hadarai, Heian, Himo. Immeral, Ivellios,
-					Laucian, Mindartis, Paelias, Peren, Quarion, Riardon,
-					Rolen, Soveliss, Thamior, Tharivol, Theren, Varis",
-			"female": "Adrie, Althaea, Anastrianna,
-					Andraste, Antinua, Bethrynna, Birel, Caelynn,
-					Orusilia, Enna, Felosial, lelenia,jelenneth, Keyleth,
-					Leshanna, Lia, Meriele, Mialee, Naivara, Quelenna,
-					Quillathe, Sariel, Shanairra, Shava, Silaqui,
-					Theirastra, Thia, Vadania, Valanthe, Xanaphia",
-			"family": "Amakiir
-					(Gemflower), Amastacia (Starflower), Galanodel
-					(Moonwhisper), Holimion (Oiamonddew), IIphelkiir
-					(Gemblossom), Liadon (Silverfrond), Meliamne
-					(Oakenheel), Nailo (Nightbreeze), Siannodel
-					(Moonbrook), Xiloscient (Goldpetal)"
-		}
+			"male": "Adran, Aelar, Aramil, Arannis, Aust, Beiro, Berrian, Carrie, Enialis, Erdan, Erevan, Galinndan, Hadarai, Heian, Himo. Immeral, Ivellios, Laucian, Mindartis, Paelias, Peren, Quarion, Riardon, Rolen, Soveliss, Thamior, Tharivol, Theren, Varis",
+			"female": "Adrie, Althaea, Anastrianna, Andraste, Antinua, Bethrynna, Birel, Caelynn, Orusilia, Enna, Felosial, lelenia,jelenneth, Keyleth, Leshanna, Lia, Meriele, Mialee, Naivara, Quelenna, Quillathe, Sariel, Shanairra, Shava, Silaqui, Theirastra, Thia, Vadania, Valanthe, Xanaphia",
+			"family": "Amakiir (Gemflower), Amastacia (Starflower), Galanodel (Moonwhisper), Holimion (Oiamonddew), IIphelkiir (Gemblossom), Liadon (Silverfrond), Meliamne (Oakenheel), Nailo (Nightbreeze), Siannodel (Moonbrook), Xiloscient (Goldpetal)"
+		},
 		"stats": {
 			"dexterity": 2
 		},
@@ -103,7 +71,7 @@ var race_data = {
 				}
 			},
 			"dark": {
-				"name": "Drow"
+				"name": "Drow",
 				"stats": {
 					"charisma": 1
 				}
@@ -112,7 +80,7 @@ var race_data = {
 		"source": "ph"
 	},
 	"gnome": {
-		"name": "gnome",
+		"name": "Gnome",
 		"stats": {
 			"intelligence": 2
 		},
@@ -154,15 +122,8 @@ var race_data = {
 	"half-orc": {
 		"name": "Half-Orc",
 		"names": {
-			"male": {
-				"Deneh, Feng, Gell, Henk, Holg, Imsh,
-				Kelh, Krusk, Mhurren, Ront, Shump, Thokk"
-			},
-			"female": {
-				"Baggi, Emen, Engong, Kansif,
-				Myev, Neega, Ovak, Ownka, Shaulha, Sulha, Vola,
-				Volen, Yevelda"
-			}
+			"male": "Deneh, Feng, Gell, Henk, Holg, Imsh, Kelh, Krusk, Mhurren, Ront, Shump, Thokk" ,
+			"female": "Baggi, Emen, Engong, Kansif, Myev, Neega, Ovak, Ownka, Shaulha, Sulha, Vola, Volen, Yevelda"
 		},
 		"stats": {
 			"strength": 2,
@@ -174,15 +135,9 @@ var race_data = {
 	"halfling": {
 		"name": "Halfling",
 		"names": {
-			"male": "Alton, Ander, Cade, Corrin, Eldon, Errich,
-					Finnan, Garret, Lindal, Lyle, Merric, Milo, Osborn,
-					Perrin, Reed, Roscoe, Wellby",
-			"female": "Andry, Bree, Callie, Cora, Euphemia,
-					jillian, Kithri, Lavinia, Lidda, Merla, Nedda, Paela,
-					Portia, Seraphina, Shaena, Trym, Vani, Verna",
-			"family": "Brushgather, Goodbarrel, Greenbottle,
-					High-hill, Hilltopple, Leagallow, Tealeaf, Thorngage,
-					Tosscobble, Underbough"
+			"male": "Alton, Ander, Cade, Corrin, Eldon, Errich, Finnan, Garret, Lindal, Lyle, Merric, Milo, Osborn, Perrin, Reed, Roscoe, Wellby",
+			"female": "Andry, Bree, Callie, Cora, Euphemia, jillian, Kithri, Lavinia, Lidda, Merla, Nedda, Paela, Portia, Seraphina, Shaena, Trym, Vani, Verna",
+			"family": "Brushgather, Goodbarrel, Greenbottle, High-hill, Hilltopple, Leagallow, Tealeaf, Thorngage, Tosscobble, Underbough"
 		},
 		"stats": {
 			"dexterity": 2
@@ -236,7 +191,7 @@ var race_data = {
 			"turami": {
 
 			}
-		}
+		},
 		"stats": {
 			"all": 1
 		},
@@ -254,7 +209,7 @@ var race_data = {
 	},
 	"aarakocra": {
 		"name": "Aarakocra",
-		"size": "medium"
+		"size": "medium",
 		"stats": {
 			"dexterity": 2,
 			"wisdom": 1
