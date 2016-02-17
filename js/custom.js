@@ -12,6 +12,12 @@ $(document).ready(function() {
 	});
 });
 
+populate_classes = function(){
+	$.each(race_data, function(key){
+		$("#class-dropdown").append("<li><a href='#'>"+key+"</a></li>")
+	})
+}
+
 dothing = function(k, v){
 	$("#main").append(v.name + "<br />");
 }
