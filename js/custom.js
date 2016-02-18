@@ -5,12 +5,21 @@ $(document).ready(function() {
 
 	$(function(){
 		$(".dropdown-menu li a").click(function(){
-			$(this).parents(".dropdown").find(".btn").html(toTitleCase($(this).text()) + " <span class='caret'></span>");
-			var race = $(this).parents(".dropdown").find(".btn").val($(this).text());
-			$("#subrace-dropdown-container").hide();
-			if(race_data[race.val().toLowerCase()].subraces){
-				$("#subrace-dropdown").html("Select Subrace <span class='caret'></span>")
-				populate_subracees(race.val());
+			var button = $(this).parents(".dropdown").find(".btn");
+
+			button.html($(this).text());
+
+			var buttonText = button.text().toLowerCase();
+
+			if(button.is("#race-dropdown")){ // they clicked a race
+				if(race_data[buttonText].subraces){ //has subraces
+					populate_subraces(buttonText);
+				}else{
+					$("#subrace-dropdown-container").hide();
+				}
+				$("#race-name").text(buttonText);
+			}else if(button.is("#class-dropdown")){ //they clicked a class
+				$("#class-name").text(buttonText);
 			}
 		});
 	});
@@ -24,16 +33,21 @@ function populate_races(){
 	});
 }
 
-function populate_subracees(race){
+function populate_subraces(race){
 	$("#subrace-dropdown-container").show();
 	$("#subrace-dropdown-menu").empty();
+	$("#subrace-dropdown").html("Select Subrace <span class='caret'></span>")
+
 	$.each(race_data[race.toLowerCase()].subraces, function(key){
 		$("#subrace-dropdown-menu").append("<li><a href='#'>"+toTitleCase(key)+"</a></li>")
 	})
-	$(".dropdown-menu li a").click(function(){
-		$(this).parents(".dropdown").find(".btn").html(toTitleCase($(this).text()) + " <span class='caret'></span>");
-		$(this).parents(".dropdown").find(".btn").val($(this).text());
-	});
+
+	$("#subrace-dropdown-menu li a").click(function(){
+		var button = $("#subrace-dropdown");
+		button.html($(this).text());
+
+		$("#subrace-name").text(button.text()); //set subrace name text in summary
+	})
 }
 
 function populate_classes(){
