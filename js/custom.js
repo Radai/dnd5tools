@@ -3,6 +3,9 @@ $(document).ready(function() {
 	populate_races();
 	populate_classes();
 
+	console.log(race_data);
+	console.log(class_data);
+
 	$(function(){
 		$(".dropdown-menu li a").click(function(){
 			var button = $(this).parents(".dropdown").find(".btn");
