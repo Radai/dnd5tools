@@ -35,15 +35,45 @@
 	</div>
 
 	<div class="row">
+		<h4>Character Summary</h4>
+		<div class="col-md-12" id="stats">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
 		<div class="col-md-12" id="main">
 			<div class="col-md-4">
 				<div class="dropdown">
-					<button class="btn btn-default dropdown-toggle" type="button" id="class-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						Select Class <span class="caret"></span>
+					<button class="btn btn-default dropdown-toggle" type="button" id="race-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Select Race <span class="caret"></span>
 					</button>
+					<ul id="race-dropdown-menu" class="dropdown-menu" aria-labelledby="race-dropdown">
+					</ul>
 				</div>
 			</div>
-			<div class="col-md-4" id="race-select"></div>
+			<div class="col-md-4">
+				<div id="subrace-dropdown-container" class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="subrace-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Select Subrace <span class="caret"></span>
+					</button>
+					<ul id="subrace-dropdown-menu" class="dropdown-menu" aria-labelledby="subrace-dropdown">
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-4" id="class-select">
+				<div id="class-dropdown-container" class="dropdown">
+				<button class="btn btn-default dropdown-toggle" type="button" id="class-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Select Class <span class="caret"></span>
+				</button>
+				<ul id="class-dropdown-menu" class="dropdown-menu" aria-labelledby="class-dropdown">
+				</ul>
+				</div>
+			</div>
 		</div>
 	</div>
 	<br />
@@ -52,6 +82,7 @@
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/race_data.js"></script>
+<script src="js/class_data.js"></script>
 <script src="js/custom.js"></script>
 </body>
 </html>
