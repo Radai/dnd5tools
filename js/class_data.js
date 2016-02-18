@@ -2,60 +2,61 @@ var class_data = {
 	"barbarian": {
 		"hit_dice": "d12",
 		"primary": "strength",
-		"saving_throw": {"strength", "constitution"},
+		"saving_throw": ["strength", "constitution"],
 		"profincencies": {
-			"armor": {
+			"armor": [
 				"light",
 				"medium",
-				"shields"},
-			"weapon": {
+				"shields"
+			],
+			"weapon": [
 				"simple",
 				"martial"
-			}
+			]
 		}
 	},
 	"bard": {
 		"hit_dice": "d8",
 		"primary": "charisma",
-		"saving_throw": {"dexterity, charisma"},
+		"saving_throw": ["dexterity", "charisma"],
 		"profincencies": {
-			"armor": {
+			"armor": [
 				"light"
-			},
-			"weapon": {
+			],
+			"weapon": [
 				"simple",
 				"hand_crossbows",
 				"longswords",
 				"rapiers"
-			}
+			]
 		}
 	},
 	"cleric": {
 		"hit_dice": "d8",
 		"primary": "wisdom",
-		"saving_throw": {"wisdom, charisma"},
+		"saving_throw": ["wisdom", "charisma"],
 		"profincencies": {
-			"armor": {
+			"armor": [
 				"light",
 				"medium",
 				"shields"
-			},
-			"weapon": {
+			],
+			"weapon": [
 				"simple"
-			}
+			]
 		}
 	},
 	"druid": {
 		"hit_dice": "d8",
 		"primary": "wisdom",
-		"saving_throw": {"intelligence, wisdom"},
+		"saving_throw": ["intelligence", "wisdom"],
 		"profincencies": {
-			"armor": {
+			"armor": [
 				"light",
 				"medium (non-metal)",
 				"shields (non-metal)",
-			},
-			"weapon": {
+			],
+			"weapon": [
 				"clubs",
 				"daggers",
 				"darts",
@@ -66,125 +67,125 @@ var class_data = {
 				"sickles",
 				"slings",
 				"spears"
-			}
+			]
 		}
 	},
 	"fighter": {
 		"hit_dice": "d10",
-		"primary": {"strength","dexterity"} //pick one
-		"saving_throw": {"strength, constitution"},
+		"primary": ["strength", "dexterity"], //pick one
+		"saving_throw": ["strength", "constitution"],
 		"profincencies": {
-			"armor": {
+			"armor": [
 				"all",
 				"shields"
-			},
-			"weapon": {
+			],
+			"weapon": [
 				"simple",
 				"martial"
-			}
+			]
 		}
 	},
 	"monk": {
 		"hit_dice": "d8",
 		"primary": "dexterity",
-		"saving_throw": {"dexterity", "strength"}, //lvl 14 gain prof in all
+		"saving_throw": ["dexterity", "strength"], //lvl 14 gain prof in all
 		"profincencies": {
-			"armor": {},
-			"weapon": {
+			"armor": [],
+			"weapon": [
 				"simple",
 				"shortsword"
-			}
+			]
 		}
 	},
 	"paladin": {
 		"hit_dice": "d10",
-		"primary": {"strength", "charisma"} //pick both
-		"saving_throw": {"dexterity, charisma"},
+		"primary": ["strength", "charisma"], //pick both
+		"saving_throw": ["dexterity", "charisma"],
 		"profincencies": {
-			"armor": {
+			"armor": [
 				"all",
 				"shields"
-			},
-			"weapon": {
+			],
+			"weapon": [
 				"simple",
 				"martial"
-			}
+			]
 		}
 	},
 	"ranger": {
 		"hit_dice": "d10",
 		"primary": "dexterity",
-		"saving_throw": {"dexterity, strength"},
+		"saving_throw": ["dexterity", "strength"],
 		"profincencies": {
-			"armor": {
+			"armor": [
 				"light",
 				"medium",
 				"shields"
-			},
-			"weapon": {
+			],
+			"weapon": [
 				"simple",
 				"martial"
-			}
+			]
 		}
 	},
 	"rogue": {
 		"hit_dice": "d8",
 		"primary": "dexterity",
-		"saving_throw": {"dexterity", "intelligence"},
+		"saving_throw": ["dexterity", "intelligence"],
 		"profincencies": {
-			"armor": {
+			"armor": [
 				"light"
-			},
-			"weapon": {
+			],
+			"weapon": [
 				"simple",
 				"hand_crossbows",
 				"longswords",
 				"rapiers",
 				"shortswords"
-			}
+			]
 		}
 	},
 	"sorcerer": {
 		"hit_dice": "d6",
 		"primary": "charisma",
-		"saving_throw": {"constitution", "charisma"},
+		"saving_throw": ["constitution", "charisma"],
 		"profincencies": {
-			"armor": {},
-			"weapon": {
+			"armor": [],
+			"weapon": [
 				"daggers",
 				"darts",
 				"slings",
 				"quarterstaffs",
 				"light crossbows"
-			}
+			]
 		}
 	},
 	"warlock": {
 		"hit_dice": "d8",
 		"primary": "charisma",
-		"saving_throw": {"wisdom", "charisma"},
+		"saving_throw": ["wisdom", "charisma"],
 		"profincencies": {
-			"armor": {
+			"armor": [
 				"light"
-			},
-			"weapon": {
+			],
+			"weapon": [
 				"simple"
-			}
+			]
 		}
 	},
 	"wizard": {
 		"hit_dice": "d6",
 		"primary": "intelligence",
-		"saving_throw": {"intelligence", "wisdom"},
+		"saving_throw": ["intelligence", "wisdom"],
 		"profincencies": {
-			"armor": {},
-			"weapon": {
+			"armor": [],
+			"weapon": [
 				"daggers",
 				"darts",
 				"slings",
 				"quarterstaffs",
 				"light crossbows"
-			}
+			]
 		}
 	},
 }
