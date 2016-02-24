@@ -1,3 +1,90 @@
-<h1>This is a test page!</h1>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<p>Test!</p>
+	<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="manifest" href="manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+	<title>D&D 5th Edition Compendium & CB</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+	<div class="page-header">
+		<h1>D&D 5E Compendium</h1>
+	</div>
+
+	<div class="row">
+		<h4>Character Summary</h4>
+		<div class="col-md-12" id="stats">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<h5><span id="subrace-name"></span> <span id="race-name"></span> <span id="class-name"></span></h5>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12" id="main">
+			<div class="col-md-4">
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="race-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Select Race <span class="caret"></span>
+					</button>
+					<ul id="race-dropdown-menu" class="dropdown-menu" aria-labelledby="race-dropdown">
+					</ul>
+				</div>
+				<div style="font-size: 10px;" id="race-dump"></div>
+			</div>
+			<div class="col-md-4">
+				<div id="subrace-dropdown-container" class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="subrace-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Select Subrace <span class="caret"></span>
+					</button>
+					<ul id="subrace-dropdown-menu" class="dropdown-menu" aria-labelledby="subrace-dropdown">
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-4" id="class-select">
+				<div id="class-dropdown-container" class="dropdown">
+				<button class="btn btn-default dropdown-toggle" type="button" id="class-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Select Class <span class="caret"></span>
+				</button>
+				<ul id="class-dropdown-menu" class="dropdown-menu" aria-labelledby="class-dropdown">
+				</ul>
+				</div>
+				<div style="font-size: 10px;" id="class-dump"></div>
+			</div>
+		</div>
+	</div>
+	<br />
+</div>
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/race_data.js"></script>
+<script src="js/class_data.js"></script>
+<script src="js/custom.js"></script>
+</body>
+</html>
