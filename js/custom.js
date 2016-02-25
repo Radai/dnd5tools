@@ -1,63 +1,30 @@
 $(document).ready(function() {
 	//Main Bootstrap/jQuery custom code
-	populate_races();
-	populate_classes();
-
 	console.log(race_data);
 	console.log(class_data);
 
 	$(function(){
-		$(".dropdown-menu li a").click(function(){
-			var button = $(this).parents(".dropdown").find(".btn");
+		$("#race-dropdown-menu li a").click(function(){
+			var race_name = this.text.toLowerCase();
+			$("#race-name").text(this.text);
 
-			button.html($(this).text());
-
-			var buttonText = button.text().toLowerCase();
-
-			if(button.is("#race-dropdown")){ // they clicked a race
-				if(race_data[buttonText].subraces){ //has subraces
-					populate_subraces(buttonText);
-				}else{
-					$("#subrace-dropdown-container").hide();
-				}
-				$("#race-name").text(buttonText);
-			}else if(button.is("#class-dropdown")){ //they clicked a class
-				$("#class-name").text(buttonText);
+			if(race_data[race_name] == undefined){ //check subraces
+				var baserace = race_data[$($(this).parent().prevAll(".base-race").get(0)).text().trim().toLowerCase()];
+				var subrace = baserace.subraces[race_name.substr(0, race_name.indexOf(' '))];
+				console.log(subrace, baserace);
+			}else{ //not a subrace
+				var baserace = race_data[$(this).text().toLowerCase()];
+				console.log(race_data[race_name]);
 			}
+		});
+
+		$("#class-dropdown-menu li a").click(function(){
+			$("#class-name").text(this.text);
 		});
 	});
 
-	$("#subrace-dropdown-container").hide();
+	console.log("finished loading");
 });
-
-function populate_races(){
-	$.each(race_data, function(key){
-		$("#race-dropdown-menu").append("<li><a href='#'>"+toTitleCase(key)+"</a></li>");
-	});
-}
-
-function populate_subraces(race){
-	$("#subrace-dropdown-container").show();
-	$("#subrace-dropdown-menu").empty();
-	$("#subrace-dropdown").html("Select Subrace <span class='caret'></span>")
-
-	$.each(race_data[race.toLowerCase()].subraces, function(key){
-		$("#subrace-dropdown-menu").append("<li><a href='#'>"+toTitleCase(key)+"</a></li>")
-	})
-
-	$("#subrace-dropdown-menu li a").click(function(){
-		var button = $("#subrace-dropdown");
-		button.html($(this).text());
-
-		$("#subrace-name").text(button.text()); //set subrace name text in summary
-	})
-}
-
-function populate_classes(){
-	$.each(class_data, function(key){
-		$("#class-dropdown-menu").append("<li><a href='#'>"+toTitleCase(key)+"</li>");
-	});
-}
 
 function toTitleCase(str)
 {
