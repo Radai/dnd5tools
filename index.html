@@ -13,10 +13,10 @@
 	<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
 	<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
 	<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+	<!-- <link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"> -->
 	<link rel="manifest" href="manifest.json">
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="ms-icon-144x144.png">
@@ -39,13 +39,74 @@
 		<div class="col-md-12" id="stats">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<h5><span id="subrace-name"></span> <span id="race-name"></span> <span id="class-name"></span></h5>
+					<h5><span id="race-name"></span> <span id="class-name"></span></h5>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="row">
+		<div class="col-md-12" id="main">
+			<div class="col-md-4">
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="race-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Select Race <span class="caret"></span>
+					</button>
+					<ul id="race-dropdown-menu" class="dropdown-menu" aria-labelledby="race-dropdown">
+						<li><a tabindex="-1" href="#">Dragonborn</a></li>
+						<li class="base-race"><a tabindex="-1" href="#" style="pointer-events: none; cursor: default;">Dwarf</a>
+							<li><a tabindex="-1" href="#" style="padding-left:3em;">Hill Dwarf</a></li>
+							<li><a tabindex="-1" href="#" style="padding-left:3em;">Mountain Dwarf</a></li>
+						</li>
+						<li class="base-race"><a tabindex="-1" href="#" style="pointer-events: none; cursor: default;">Elf</a>
+							<li><a tabindex="-1" href="#" style="padding-left:3em;">High Elf</a></li>
+							<li><a tabindex="-1" href="#" style="padding-left:3em;">Wood Elf</a></li>
+							<li><a tabindex="-1" href="#" style="padding-left:3em;">Drow</a></li>
+						</li>
+						<li class="base-race"><a tabindex="-1" href="#" style="pointer-events: none; cursor: default;">Gnome</a>
+							<li><a tabindex="-1" href="#" style="padding-left:3em;">Forest Gnome</a></li>
+							<li><a tabindex="-1" href="#" style="padding-left:3em;">Rock Gnome</a></li>
+							<li><a tabindex="-1" href="#" style="padding-left:3em;">Deep Gnome</a></li>
+						</li>
+						<li><a tabindex="-1" href="#">Half-elf</a></li>
+						<li><a tabindex="-1" href="#">Half-orc</a></li>
+						<li><a tabindex="-1" href="#">Human</a></li>
+						<li><a tabindex="-1" href="#">Tiefling</a></li>
+						<li class="disabled"><a tabindex="-1" href="#">Aarakocra</a></li>
+						<li class="base-race"><a tabindex="-1" style="pointer-events: none; cursor: default;" >Genasi</a>
+							<li><a tabindex="-1" href="#" style="padding-left:3em;">Air</a></li>
+							<li><a tabindex="-1" href="#" style="padding-left:3em;">Water</a></li>
+							<li><a tabindex="-1" href="#" style="padding-left:3em;">Earth</a></li>
+							<li><a tabindex="-1" href="#" style="padding-left:3em;">Fire</a></li>							
+						</li>
+						<li><a tabindex="-1" href="#">Goliath</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-4" id="class-select">
+				<div id="class-dropdown-container" class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="class-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Class <span class="caret"></span>
+					</button>
+					<ul id="class-dropdown-menu" class="dropdown-menu" aria-labelledby="class-dropdown">
+						<li><a tabindex="-1" href="#">Barbarian</a></li>
+						<li><a tabindex="-1" href="#">Bard</a></li>
+						<li><a tabindex="-1" href="#">Cleric</a></li>
+						<li><a tabindex="-1" href="#">Druid</a></li>
+						<li><a tabindex="-1" href="#">Fighter</a></li>
+						<li><a tabindex="-1" href="#">Monk</a></li>
+						<li><a tabindex="-1" href="#">Paladin</a></li>
+						<li><a tabindex="-1" href="#">Ranger</a></li>
+						<li><a tabindex="-1" href="#">Rogue</a></li>
+						<li><a tabindex="-1" href="#">Sorcerer</a></li>
+						<li><a tabindex="-1" href="#">Warlock</a></li>
+						<li><a tabindex="-1" href="#">Wizard</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!-- 	<div class="row">
 		<div class="col-md-12" id="main">
 			<div class="col-md-4">
 				<div class="dropdown">
@@ -77,7 +138,7 @@
 				<div style="font-size: 10px;" id="class-dump"></div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<br />
 </div>
 
