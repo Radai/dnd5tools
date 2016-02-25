@@ -1,0 +1,10 @@
+@font-face {
+	font-family: 'dalelands';
+	src: url('fonts/dalelands/Dalelands Uncial.otf');
+}
+
+h1.header-font {
+	font-family: dalelands;
+	font-size: 72px;
+	text-align: center;
+}
