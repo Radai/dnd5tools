@@ -5,6 +5,12 @@
 
 h1.header-font {
 	font-family: dalelands;
-	font-size: 72px;
+	font-size: 64px;
+	font-size: 4.0vw;
 	text-align: center;
+	font-weight: bold;
+}
+
+.character-summary {
+	height: 40px;
 }
