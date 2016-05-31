@@ -1,50 +1,37 @@
-<html lang="en">
+<html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-	<link rel="manifest" href="manifest.json">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">
-
-	<title>D&D 5th Edition Compendium & CB</title>
-
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/style.css">
+	<title>D&amp;D 5E Compendium</title>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/typeahead.jquery.js"></script>
+	<script src="js/script.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1">
 </head>
 <body>
-
-<div class="container">
-	<div class="page-header">
-		<h1>D&D 5E Compendium</h1>
-	</div>
-
-	<div class="row">
-		<div class="col-md-12" id="main">
-			
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 id="heading">D&amp;D 5e Compendium Tool</h1>
+				<br />
+				<div id="searchbox">
+				  <input class="typeahead input-lg" type="text" placeholder="Enter text here...">
+				</div>
+				<br />
+				<div id="results">
+					<label for="name">Name:&nbsp;</label><span id="name"></span><br />
+					<label for="level">Level:&nbsp;</label><span id="level"></span><br />
+					<label for="school">School:&nbsp;</label><span id="school"></span><br />
+					<label for="range">Range:&nbsp;</label><span id="range"></span><br />
+					<label for="components">Components:&nbsp;</label><span id="components"></span><br />
+					<label for="duration">Duration:&nbsp;</label><span id="duration"></span><br />
+					<label for="classes">Classes:&nbsp;</label><span id="classes"></span><br />
+					<br /><span id="description"></span>
+				</div>
+				<br />
+			</div>
 		</div>
 	</div>
-	<br />
-</div>
-
-<script src="js/jquery-2.1.4.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/race_data.js"></script>
-<script src="js/custom.js"></script>
 </body>
 </html>
