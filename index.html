@@ -1,8 +1,13 @@
-<html lang="en">
+<html>
 <head>
+	<title>D&amp;D 5E Compendium</title>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/typeahead.jquery.js"></script>
+	<script src="js/script.js"></script>
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
@@ -18,117 +23,33 @@
 	<meta name="msapplication-TileImage" content="ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
 
-	<title>D&D 5th Edition Compendium & Character Builder</title>
-
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1">
 </head>
 <body>
-
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="page-header">
-				<h1 class="header-font">Dungeons &amp; Dragons 5th Edition Character Creator</h1><br/>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 id="heading">D&amp;D 5e Compendium Tool</h1>
+				<br />
+				<div id="searchbox">
+				  <input class="typeahead input-lg" type="text" placeholder="Enter text here...">
+				</div>
+				<br />
+				<div id="results">
+					<label for="name">Name:&nbsp;</label><span id="name"></span><br />
+					<label for="level">Level:&nbsp;</label><span id="level"></span><br />
+					<label for="school">School:&nbsp;</label><span id="school"></span><br />
+					<label for="range">Range:&nbsp;</label><span id="range"></span><br />
+					<label for="components">Components:&nbsp;</label><span id="components"></span><br />
+					<label for="duration">Duration:&nbsp;</label><span id="duration"></span><br />
+					<label for="classes">Classes:&nbsp;</label><span id="classes"></span><br />
+					<br /><span id="description"></span>
+				</div>
+				<br />
 			</div>
 		</div>
 	</div>
-
-	<div class="row">
-		<div class="tabbable tabs-left col-md-3">
-			<ul class="nav nav-pills nav-stacked">
-				<li role="presentation" class="active"><a href="#tab1" data-toggle="tab">Class and Race Selection</a></li>
-				<li role="presentation"><a href="#tab2" data-toggle="tab">Abilities and Skills</a></li>
-				<li role="presentation"><a href="#tab3" data-toggle="tab">Equipment Selction</a></li>
-				<li role="presentation"><a href="#tab4" data-toggle="tab">Features and Traits</a></li>
-			</ul>
-		</div>
-		<div class="tab-content col-md-9">
-			<h4>Character Summary</h4>
-			<div class="panel panel-default">
-				<div class="panel-body character-summary">
-					<h5><span id="race-name"></span> <span id="class-name"></span></h5>
-				</div>
-			</div>
-			<div class="tab-pane active" id="tab1">
-				<div class="col-md-9" id="stats">
-					<div class="col-md-9" id="main">
-						<div class="col-md-6 col-xs-3">
-							<div class="dropdown">
-								<button class="btn btn-default dropdown-toggle" type="button" id="race-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Select Race <span class="caret"></span>
-								</button>
-								<ul id="race-dropdown-menu" class="dropdown-menu" aria-labelledby="race-dropdown">
-									<li><a tabindex="-1" href="#">Dragonborn</a></li>
-									<li class="base-race"><a tabindex="-1" href="#" style="pointer-events: none; cursor: default;">Dwarf</a>
-										<li><a tabindex="-1" href="#" style="padding-left:3em;">Hill Dwarf</a></li>
-										<li><a tabindex="-1" href="#" style="padding-left:3em;">Mountain Dwarf</a></li>
-									</li>
-									<li class="base-race"><a tabindex="-1" href="#" style="pointer-events: none; cursor: default;">Elf</a>
-										<li><a tabindex="-1" href="#" style="padding-left:3em;">High Elf</a></li>
-										<li><a tabindex="-1" href="#" style="padding-left:3em;">Wood Elf</a></li>
-										<li><a tabindex="-1" href="#" style="padding-left:3em;">Drow</a></li>
-									</li>
-									<li class="base-race"><a tabindex="-1" href="#" style="pointer-events: none; cursor: default;">Gnome</a>
-										<li><a tabindex="-1" href="#" style="padding-left:3em;">Forest Gnome</a></li>
-										<li><a tabindex="-1" href="#" style="padding-left:3em;">Rock Gnome</a></li>
-										<li><a tabindex="-1" href="#" style="padding-left:3em;">Deep Gnome</a></li>
-									</li>
-									<li><a tabindex="-1" href="#">Half-elf</a></li>
-									<li><a tabindex="-1" href="#">Half-orc</a></li>
-									<li><a tabindex="-1" href="#">Human</a></li>
-									<li><a tabindex="-1" href="#">Tiefling</a></li>
-									<li class="disabled"><a tabindex="-1" href="#">Aarakocra</a></li>
-									<li class="base-race"><a tabindex="-1" style="pointer-events: none; cursor: default;" >Genasi</a>
-										<li><a tabindex="-1" href="#" style="padding-left:3em;">Air Genasi</a></li>
-										<li><a tabindex="-1" href="#" style="padding-left:3em;">Water Genasi</a></li>
-										<li><a tabindex="-1" href="#" style="padding-left:3em;">Earth Genasi</a></li>
-										<li><a tabindex="-1" href="#" style="padding-left:3em;">Fire Genasi</a></li>							
-									</li>
-									<li><a tabindex="-1" href="#">Goliath</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-6 col-xs-3" id="class-select">
-							<div id="class-dropdown-container" class="dropdown">
-								<button class="btn btn-default dropdown-toggle" type="button" id="class-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Class <span class="caret"></span>
-								</button>
-								<ul id="class-dropdown-menu" class="dropdown-menu" aria-labelledby="class-dropdown">
-									<li><a tabindex="-1" href="#">Barbarian</a></li>
-									<li><a tabindex="-1" href="#">Bard</a></li>
-									<li><a tabindex="-1" href="#">Cleric</a></li>
-									<li><a tabindex="-1" href="#">Druid</a></li>
-									<li><a tabindex="-1" href="#">Fighter</a></li>
-									<li><a tabindex="-1" href="#">Monk</a></li>
-									<li><a tabindex="-1" href="#">Paladin</a></li>
-									<li><a tabindex="-1" href="#">Ranger</a></li>
-									<li><a tabindex="-1" href="#">Rogue</a></li>
-									<li><a tabindex="-1" href="#">Sorcerer</a></li>
-									<li><a tabindex="-1" href="#">Warlock</a></li>
-									<li><a tabindex="-1" href="#">Wizard</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="tab-pane" id="tab2">
-				2
-			</div>
-			<div class="tab-pane" id="tab3">
-				3
-			</div>
-			<div class="tab-pane" id="tab4">
-				4
-			</div>			
-		</div>
-	</div>
-</div>
-
-<script src="js/jquery-2.1.4.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/race_data.js"></script>
-<script src="js/class_data.js"></script>
-<script src="js/custom.js"></script>
 </body>
 </html>
