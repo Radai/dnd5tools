@@ -52,6 +52,19 @@ input.typeahead, .twitter-typeahead {
     width: 100%;
 }
 
+@font-face {
+    font-family: 'dalelands';
+    src: url('fonts/dalelands/Dalelands Uncial.otf');
+}
+
+h1.header-font {
+    font-family: dalelands;
+    font-size: 64px;
+    font-size: 4.0vw;
+    text-align: center;
+    font-weight: bold;
+}
+
 /* -- Card Styling -- */
 
 div#results {
@@ -64,5 +77,3 @@ div#results {
 }
 
 div#results div {
-
-}
