@@ -3,13 +3,28 @@ var races, feats, backgrounds, classes;
 
 $(document).ready(function(){
 
-  $.ajax({
-    type: 'GET',
-    url: 'full.xml',
-    crossDomain: true,
-    dataType: 'xml',
-    success: parseAll
-  });
+  $.when(
+    $.ajax({
+      type: 'GET',
+      cache: true,
+      url: 'https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Compendiums/Full%20Compendium.xml',
+      crossDomain: true,
+      dataType: 'xml',
+    }),
+    $.ajax({
+      type: 'GET',
+      cache: true,
+      url: 'https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Homebrew/Blood%20Hunter.xml',
+      crossDomain: true,
+      dataType: 'xml',
+    })
+  ).then(function(full, bh){
+    //build full xml object then parse it
+    var bloodhunter = $(bh).find("class");
+    $(full[0]).find("compendium")[0].appendChild(bloodhunter[0]);
+
+    parseAll(full[0]);
+  })
 
   $('.typeahead').bind("typeahead:active", function(ev){
     $('.typeahead').typeahead('val', '');
@@ -23,53 +38,30 @@ $(document).ready(function(){
 });
 
 function createCard(info){
-  // switch(info.nodeName) {
-  //   case "spell": 
-    $("#results").empty();
-      $(".typeahead").blur();
-      var nodes = info.childNodes;
-      var firstText = true;
+  $("#results").empty();
+  $(".typeahead").blur();
+  var nodes = info.childNodes;
+  var firstText = true;
 
-      for(var i = 1; i < nodes.length; i+=2){
-        var node = nodes[i];
-        var name = node.nodeName;
-        if(name != "text"){
-          $("#results").append("<label for="+name+">"+name.toTitleCase()+":&nbsp;</label><span id=" + name + ">"+node.textContent+"</span><br />");
-        }else{ //if node is text node...
-          if(firstText == false){
-            $("#results").append("<p>" + node.textContent + "</p>");
-          }else{
-            $("#results").append("<label for="+name+">Description:&nbsp;</label><span id='description'>"+node.textContent+"</span>");
-            firstText = false;
-          }
-        }
+  // use reflection to build out info card
+  for(var i = 1; i < nodes.length; i+=2){
+    var node = nodes[i];
+    var name = node.nodeName;
+    if(name != "text"){
+      $("#results").append("<label for="+name+">"+name.toTitleCase()+":&nbsp;</label><span id=" + name + ">"+node.textContent+"</span><br />");
+    }else{ //if node is text node...
+      if(firstText == false){
+        $("#results").append("<p>" + node.textContent + "</p>");
+      }else{
+        $("#results").append("<label for="+name+">Description:&nbsp;</label><span id='description'>"+node.textContent+"</span>");
+        firstText = false;
       }
+    }
+  }
 
-      // $("#name").text($(info).find("name").text());
-      // $("#level").text($(info).find("level").text());
-      // $("#school").text($(info).find("school").text());
-      // $("#range").text($(info).find("range").text());
-      // $("#components").text($(info).find("components").text());
-      // $("#duration").text($(info).find("duration").text());
-      // $("#classes").text($(info).find("classes").text());
+  //show it too
+  $("#results").show();
 
-      // //wrap each text in p tags
-      // var str = "";
-      // $.each($(info).find("text"), function(i, k){
-      //   str += "<p>" + k.textContent + "</p>";
-      // })
-      // $("#description").html(str);
-
-      //show it too
-      $("#results").show();
-    //   break;
-    // case "monster":
-    //   break;
-    // case "class":
-    //   break;
-    // case "item":
-    //   break;
-  // }
 }
 function parseAll(xml){
   spells = $(xml).find("spell");
@@ -81,45 +73,6 @@ function parseAll(xml){
   backgrounds = $(xml).find("background");
   setupTA();
 }
-
-// function parseSpells(xml)
-// {
-//   spells = $(xml).find("spell");
-//   $.ajax({
-//     type: 'GET',
-//     url: 'items.xml',
-//     dataType: 'xml',
-//     success: parseItems
-//   });
-// }
-
-// function parseItems(xml){
-//   items = $(xml).find("item");
-//   $.ajax({
-//     type: 'GET',
-//     url: 'monsters.xml',
-//     dataType: 'xml',
-//     success: parseMonsters
-//   });
-// }
-
-// function parseMonsters(xml){
-//   monsters = $(xml).find("monster");
-//   $.ajax({
-//     type: 'GET',
-//     url: 'ph.xml',
-//     dataType: 'xml',
-//     success: parseClasses
-//   })
-// }
-
-// function parseClasses(xml){
-//   classes = $(xml).find("class");
-//   races = $(xml).find("race");
-//   feats = $(xml).find("feat");
-//   backgrounds = $(xml).find("background");
-//   setupTA();
-// }
 
 function setupTA(){
   $('#searchbox .typeahead').typeahead({
