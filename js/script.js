@@ -121,8 +121,38 @@ function setupTA(){
     templates: {
       header: '<h4 id="queryheader">Monsters</h4>'
     }
+  },
+  {
+    name: 'feats',
+    source: featSubstringMatcher(feats),
+    limit: 5,
+    templates: {
+      header: '<h4 id="queryheader">Feats</h4>'
+    }
   });
 }
+
+function featSubstringMatcher(strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
+
+    // an array that will be populated with substring matches
+    matches = [];
+
+    // regex used to determine if a string contains the substring `q`
+    substrRegex = new RegExp(q, 'i');
+
+    // iterate through the pool of strings and for any string that
+    // contains the substring `q`, add it to the `matches` array
+    $.each(strs, function(i, str) {
+      if (substrRegex.test($(str).find("name").text())) {
+        matches.push($(str).find("name").text());
+      }
+    });
+
+    cb(matches);
+  };
+};
 
 function spellSubstringMatcher(strs) {
   return function findMatches(q, cb) {
@@ -221,22 +251,25 @@ function getInfo(sug){
       return false;
     }
   });
-  // if we're here it's not a spell
   $.each(items, function(i, item){
     if($(item).find("name").text() == sug){
       ret = item;
       return false;
     }
   });
-  // if we're here it's not a spell or item
   $.each(monsters, function(i, monster){
     if($($(monster).find("name")[0]).text() == sug){
       ret = monster;
       return false;
     }
   });
-  // if we're here it's not a spell, item, or monster
   $.each(classes, function(i, cl){
+    if($($(cl).find("name")[0]).text() == sug){
+      ret = cl;
+      return false;
+    }
+  });
+  $.each(feats, function(i, cl){
     if($($(cl).find("name")[0]).text() == sug){
       ret = cl;
       return false;
