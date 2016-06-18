@@ -93,3 +93,10 @@ div#results {
 div#results div {
 
 }
+
+/* -- Bootstrap Override -- */
+@media (min-width: 768px) {
+    .navbar-toggle.caret{
+        /*display: inline-block;*/
+    }
+}
