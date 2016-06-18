@@ -71,7 +71,9 @@ function parseAll(xml){
   races = $(xml).find("race");
   feats = $(xml).find("feat");
   backgrounds = $(xml).find("background");
+
   setupTA();
+  populateBrowseMenus();
 }
 
 function setupTA(){
@@ -92,7 +94,7 @@ function setupTA(){
   },
   {
     name: 'spells',
-    source: spellSubstringMatcher(spells),
+    source: substringMatcher(spells),
     limit: 10,
     templates: {
       header: '<h4 id="queryheader">Spells</h4>'
@@ -100,7 +102,7 @@ function setupTA(){
   },
   {
     name: 'classes',
-    source: classSubstringMatcher(classes),
+    source: substringMatcher(classes),
     limit: 2,
     templates: {
       header: '<h4 id="queryheader">Classes</h4>'
@@ -108,7 +110,7 @@ function setupTA(){
   },
   {
     name: 'items',
-    source: itemSubstringMatcher(items),
+    source: substringMatcher(items),
     limit: 5,
     templates: {
       header: '<h4 id="queryheader">Items</h4>'
@@ -116,7 +118,7 @@ function setupTA(){
   },
   {
     name: 'monsters',
-    source: monsterSubstringMatcher(monsters),
+    source: substringMatcher(monsters),
     limit: 5,
     templates: {
       header: '<h4 id="queryheader">Monsters</h4>'
@@ -124,15 +126,31 @@ function setupTA(){
   },
   {
     name: 'feats',
-    source: featSubstringMatcher(feats),
+    source: substringMatcher(feats),
     limit: 5,
     templates: {
       header: '<h4 id="queryheader">Feats</h4>'
     }
+  },
+  {
+    name: 'backgrounds',
+    source: substringMatcher(backgrounds),
+    limit: 2,
+    templates: {
+      header: '<h4 id="queryheader">Backgrounds</h4>'
+    }
+  },
+  {
+    name: 'races',
+    source: substringMatcher(races),
+    limit: 2,
+    templates: {
+      header: '<h4 id="queryheader">Races</h4>'
+    }
   });
 }
 
-function featSubstringMatcher(strs) {
+function substringMatcher(strs){
   return function findMatches(q, cb) {
     var matches, substringRegex;
 
@@ -145,137 +163,51 @@ function featSubstringMatcher(strs) {
     // iterate through the pool of strings and for any string that
     // contains the substring `q`, add it to the `matches` array
     $.each(strs, function(i, str) {
-      if (substrRegex.test($(str).find("name").text())) {
-        matches.push($(str).find("name").text());
+      if (substrRegex.test($(str).find("name").first().text())) {
+        matches.push($(str).find("name").first().text());
       }
     });
 
     cb(matches);
-  };
-};
-
-function spellSubstringMatcher(strs) {
-  return function findMatches(q, cb) {
-    var matches, substringRegex;
-
-    // an array that will be populated with substring matches
-    matches = [];
-
-    // regex used to determine if a string contains the substring `q`
-    substrRegex = new RegExp(q, 'i');
-
-    // iterate through the pool of strings and for any string that
-    // contains the substring `q`, add it to the `matches` array
-    $.each(strs, function(i, str) {
-      if (substrRegex.test($(str).find("name").text())) {
-        matches.push($(str).find("name").text());
-      }
-    });
-
-    cb(matches);
-  };
-};
-
-function classSubstringMatcher(strs){
-  return function findMatches(q, cb) {
-    var matches, substringRegex;
-
-    // an array that will be populated with substring matches
-    matches = [];
-
-    // regex used to determine if a string contains the substring `q`
-    substrRegex = new RegExp(q, 'i');
-
-    // iterate through the pool of strings and for any string that
-    // contains the substring `q`, add it to the `matches` array
-    $.each(strs, function(i, str) {
-      if (substrRegex.test($($(str).find("name")[0]).text())) {
-        matches.push($($(str).find("name")[0]).text());
-      }
-    });
-
-    cb(matches);
-  };
-}
-
-function itemSubstringMatcher(strs){
-  return function findMatches(q, cb) {
-    var matches, substringRegex;
-
-    // an array that will be populated with substring matches
-    matches = [];
-
-    // regex used to determine if a string contains the substring `q`
-    substrRegex = new RegExp(q, 'i');
-
-    // iterate through the pool of strings and for any string that
-    // contains the substring `q`, add it to the `matches` array
-    $.each(strs, function(i, str) {
-      if (substrRegex.test($(str).find("name").text())) {
-        matches.push($(str).find("name").text());
-      }
-    });
-
-    cb(matches);
-  };
-}
-
-function monsterSubstringMatcher(strs){
-  return function findMatches(q, cb) {
-    var matches, substringRegex;
-
-    // an array that will be populated with substring matches
-    matches = [];
-
-    // regex used to determine if a string contains the substring `q`
-    substrRegex = new RegExp(q, 'i');
-
-    // iterate through the pool of strings and for any string that
-    // contains the substring `q`, add it to the `matches` array
-    $.each(strs, function(i, str) {
-      if (substrRegex.test($($(str).find("name")[0]).text())) {
-        matches.push($($(str).find("name")[0]).text());
-      }
-    });
-
-    cb(matches);
-  };
+  };  
 }
 
 function getInfo(sug){
   var ret;
 
-  $.each(spells, function(i, spell){
-    if($(spell).find("name").text() == sug){
-      ret = spell;
-      return false;
-    }
+  $.each({classes, races, backgrounds, spells, items, monsters, feats}, function(i, d){
+    $(d).each(function(i2, d2){
+      if($(d2).find("name").first().text() == sug){
+        ret = d2;
+        return false;
+      }
+    });
   });
-  $.each(items, function(i, item){
-    if($(item).find("name").text() == sug){
-      ret = item;
-      return false;
-    }
-  });
-  $.each(monsters, function(i, monster){
-    if($($(monster).find("name")[0]).text() == sug){
-      ret = monster;
-      return false;
-    }
-  });
-  $.each(classes, function(i, cl){
-    if($($(cl).find("name")[0]).text() == sug){
-      ret = cl;
-      return false;
-    }
-  });
-  $.each(feats, function(i, cl){
-    if($($(cl).find("name")[0]).text() == sug){
-      ret = cl;
-      return false;
-    }
-  });
+
   return ret;
+}
+
+function populateBrowseMenus(){
+  var names = [];
+  $(".navbar-nav").each(function(i,d){
+     names.push($(d).find("a").data("name"));
+  });
+  $.each({classes, races, backgrounds, spells, items, monsters, feats}, function(){
+    var str = "";
+    var thing = this;
+    $(thing).each(function(){
+      str += "<li><a href='#'>"+$(this).find("name").first().text()+"</a></li>";
+    });
+    $("#"+name+"-menu").append(str);
+
+    // switch(name){
+    //   case "class":
+    //     classes.each(function(){
+    //       $("#class-menu").append("<li><a href='#'>"+$(this).find("name").first().text()+"</a></li>")
+    //     });
+    //     break;
+    // }
+  });
 }
 
 //------ UTIL methods
