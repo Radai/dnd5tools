@@ -6,7 +6,7 @@
 	<script src="js/typeahead.jquery.js"></script>
 	<script src="js/jquery.smartmenus.min.js"></script>
 	<script src="js/jquery.smartmenus.bootstrap.min.js"></script>
-	<script src="js/script.js"></script>
+	<script src="js/xmltojson.js"></script>
 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,9 +49,7 @@
 	      <!-- Left nav -->
 	      <ul class="nav navbar-nav">
 	        <li><a href="#" data-name="classes">Classes <span class="caret"></span></a>
-	          <ul class="dropdown-menu" id="classes-menu">
-	          <li class="divider"></li>
-	          <li class="dropdown-header">Special Classes</li>
+	          <ul class="dropdown-menu" id="class-menu">
 	            <!-- List Class names here using JS -->
 	          </ul>
 	        </li>
@@ -59,7 +57,7 @@
 
 	      <ul class="nav navbar-nav">
 	        <li><a href="#" data-name="races">Races <span class="caret"></span></a>
-	          <ul class="dropdown-menu">
+	          <ul class="dropdown-menu" id="race-menu">
 	            <!-- List Race names here using JS -->
 	          </ul>
 	        </li>
@@ -67,7 +65,7 @@
 
 	      <ul class="nav navbar-nav">
 	        <li><a href="#" data-name="backgrounds">Backgrounds <span class="caret"></span></a>
-	          <ul class="dropdown-menu">
+	          <ul class="dropdown-menu" id="background-menu">
 	            <!-- List Background names here using JS -->
 	          </ul>
 	        </li>
@@ -75,7 +73,7 @@
 
 				<ul class="nav navbar-nav">
 	        <li><a href="#" data-name="spells">Spells <span class="caret"></span></a>
-	          <ul class="dropdown-menu">
+	          <ul class="dropdown-menu" id="spell-menu">
 	            <!-- List Spell names here using JS -->
 	          </ul>
 	        </li>
@@ -83,7 +81,7 @@
 
 	      <ul class="nav navbar-nav">
 	        <li><a href="#" data-name="items">Items <span class="caret"></span></a>
-	          <ul class="dropdown-menu">
+	          <ul class="dropdown-menu" id="item-menu">
 	            <!-- List Item names here using JS -->
 	          </ul>
 	        </li>
@@ -91,7 +89,7 @@
 
 	      <ul class="nav navbar-nav">
 	        <li><a href="#" data-name="monsters">Monsters <span class="caret"></span></a>
-	          <ul class="dropdown-menu">
+	          <ul class="dropdown-menu" id="monster-menu">
 	            <!-- List Monsters names here using JS -->
 	          </ul>
 	        </li>
@@ -99,14 +97,15 @@
 
 	      <ul class="nav navbar-nav">
 	        <li><a href="#" data-name="feats">Feats <span class="caret"></span></a>
-	          <ul class="dropdown-menu">
+	          <ul class="dropdown-menu" id="feat-menu">
 	            <!-- List Feat names here using JS -->
 	          </ul>
 	        </li>
 	      </ul>		      	  
 
+	      <!-- Right navbar -->
 	      <ul class="nav navbar-nav navbar-right">
-	      	<li><a href="https://github.com/Radai/dnd5tools">Source</a></li>
+	      	<li><a href="https://github.com/Radai/dnd5tools"><i>Source</i></a></li>
 	      </ul>
 	    </div><!--/.nav-collapse -->
 	  </div><!--/.container -->
@@ -125,5 +124,7 @@
 			</div>
 		</div>
 	</div>
+
+<script src="js/script.js"></script>	
 </body>
 </html>
