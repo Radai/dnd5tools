@@ -1,29 +1,31 @@
 var spells, items, monsters;
 var races, feats, backgrounds, classes;
+var compendium;
 
-$(document).ready(function(){
-
+jQuery(document).ready(function($){
   $.when(
     $.ajax({
       type: 'GET',
       cache: true,
       url: 'https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Compendiums/Full%20Compendium.xml',
       crossDomain: true,
-      dataType: 'xml',
+      // dataType: 'xml',
     }),
     $.ajax({
       type: 'GET',
       cache: true,
       url: 'https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Homebrew/Blood%20Hunter.xml',
       crossDomain: true,
-      dataType: 'xml',
+      // dataType: 'xml',
     })
   ).then(function(full, bh){
     //build full xml object then parse it
-    var bloodhunter = $(bh).find("class");
-    $(full[0]).find("compendium")[0].appendChild(bloodhunter[0]);
+    compendium = xml2json.parser(full[0]).compendium;
+    compendium.class.push(xml2json.parser(bh[0]).compendium.class);
+    delete compendium.version;
 
-    parseAll(full[0]);
+    setupTA();
+    populateBrowseMenus();
   })
 
   $('.typeahead').bind("typeahead:active", function(ev){
@@ -40,20 +42,17 @@ $(document).ready(function(){
 function createCard(info){
   $("#results").empty();
   $(".typeahead").blur();
-  var nodes = info.childNodes;
   var firstText = true;
 
   // use reflection to build out info card
-  for(var i = 1; i < nodes.length; i+=2){
-    var node = nodes[i];
-    var name = node.nodeName;
-    if(name != "text"){
-      $("#results").append("<label for="+name+">"+name.toTitleCase()+":&nbsp;</label><span id=" + name + ">"+node.textContent+"</span><br />");
+  for(var data in info){;
+    if(data != "text"){
+      $("#results").append("<label for="+data+">"+data.toTitleCase()+":&nbsp;</label><span id=" + data + ">"+info[data]+"</span><br />");
     }else{ //if node is text node...
       if(firstText == false){
-        $("#results").append("<p>" + node.textContent + "</p>");
+        $("#results").append("<p>" + info[data] + "</p>");
       }else{
-        $("#results").append("<label for="+name+">Description:&nbsp;</label><span id='description'>"+node.textContent+"</span>");
+        $("#results").append("<label for="+data+">Description:&nbsp;</label><span id='description'>"+info[data]+"</span>");
         firstText = false;
       }
     }
@@ -62,18 +61,6 @@ function createCard(info){
   //show it too
   $("#results").show();
 
-}
-function parseAll(xml){
-  spells = $(xml).find("spell");
-  items = $(xml).find("item");
-  monsters = $(xml).find("monster");
-  classes = $(xml).find("class");
-  races = $(xml).find("race");
-  feats = $(xml).find("feat");
-  backgrounds = $(xml).find("background");
-
-  setupTA();
-  populateBrowseMenus();
 }
 
 function setupTA(){
@@ -94,7 +81,7 @@ function setupTA(){
   },
   {
     name: 'spells',
-    source: substringMatcher(spells),
+    source: substringMatcher(compendium.spell),
     limit: 10,
     templates: {
       header: '<h4 id="queryheader">Spells</h4>'
@@ -102,7 +89,7 @@ function setupTA(){
   },
   {
     name: 'classes',
-    source: substringMatcher(classes),
+    source: substringMatcher(compendium.class),
     limit: 2,
     templates: {
       header: '<h4 id="queryheader">Classes</h4>'
@@ -110,7 +97,7 @@ function setupTA(){
   },
   {
     name: 'items',
-    source: substringMatcher(items),
+    source: substringMatcher(compendium.item),
     limit: 5,
     templates: {
       header: '<h4 id="queryheader">Items</h4>'
@@ -118,7 +105,7 @@ function setupTA(){
   },
   {
     name: 'monsters',
-    source: substringMatcher(monsters),
+    source: substringMatcher(compendium.monster),
     limit: 5,
     templates: {
       header: '<h4 id="queryheader">Monsters</h4>'
@@ -126,7 +113,7 @@ function setupTA(){
   },
   {
     name: 'feats',
-    source: substringMatcher(feats),
+    source: substringMatcher(compendium.feat),
     limit: 5,
     templates: {
       header: '<h4 id="queryheader">Feats</h4>'
@@ -134,7 +121,7 @@ function setupTA(){
   },
   {
     name: 'backgrounds',
-    source: substringMatcher(backgrounds),
+    source: substringMatcher(compendium.background),
     limit: 2,
     templates: {
       header: '<h4 id="queryheader">Backgrounds</h4>'
@@ -142,7 +129,7 @@ function setupTA(){
   },
   {
     name: 'races',
-    source: substringMatcher(races),
+    source: substringMatcher(compendium.race),
     limit: 2,
     templates: {
       header: '<h4 id="queryheader">Races</h4>'
@@ -163,8 +150,8 @@ function substringMatcher(strs){
     // iterate through the pool of strings and for any string that
     // contains the substring `q`, add it to the `matches` array
     $.each(strs, function(i, str) {
-      if (substrRegex.test($(str).find("name").first().text())) {
-        matches.push($(str).find("name").first().text());
+      if (substrRegex.test(str.name)) {
+        matches.push(str.name);
       }
     });
 
@@ -175,39 +162,26 @@ function substringMatcher(strs){
 function getInfo(sug){
   var ret;
 
-  $.each({classes, races, backgrounds, spells, items, monsters, feats}, function(i, d){
-    $(d).each(function(i2, d2){
-      if($(d2).find("name").first().text() == sug){
-        ret = d2;
-        return false;
+  for(var type in compendium){
+    for(var data in compendium[type]){
+      if(compendium[type][data].name == sug){
+        return compendium[type][data];
       }
-    });
-  });
+    };
+  };
 
-  return ret;
+  // return ret;
 }
 
 function populateBrowseMenus(){
-  var names = [];
-  $(".navbar-nav").each(function(i,d){
-     names.push($(d).find("a").data("name"));
-  });
-  $.each({classes, races, backgrounds, spells, items, monsters, feats}, function(){
-    var str = "";
-    var thing = this;
-    $(thing).each(function(){
-      str += "<li><a href='#'>"+$(this).find("name").first().text()+"</a></li>";
-    });
-    $("#"+name+"-menu").append(str);
-
-    // switch(name){
-    //   case "class":
-    //     classes.each(function(){
-    //       $("#class-menu").append("<li><a href='#'>"+$(this).find("name").first().text()+"</a></li>")
-    //     });
-    //     break;
-    // }
-  });
+  var str = "";
+  for(var type in compendium){
+    str = "";
+    for(var data in compendium[type]){
+      str += "<li><a href='#'>" + compendium[type][data].name + "</a></li>";
+    }
+    $("#" + type + "-menu").append(str);;
+  }
 }
 
 //------ UTIL methods
