@@ -1,32 +1,38 @@
-var spells, items, monsters;
-var races, feats, backgrounds, classes;
 var compendium;
 
-jQuery(document).ready(function($){
-  $.when(
-    $.ajax({
-      type: 'GET',
-      cache: true,
-      url: 'https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Compendiums/Full%20Compendium.xml',
-      crossDomain: true,
-      // dataType: 'xml',
-    }),
-    $.ajax({
-      type: 'GET',
-      cache: true,
-      url: 'https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Homebrew/Blood%20Hunter.xml',
-      crossDomain: true,
-      // dataType: 'xml',
-    })
-  ).then(function(full, bh){
-    //build full xml object then parse it
-    compendium = xml2json.parser(full[0]).compendium;
-    compendium.class.push(xml2json.parser(bh[0]).compendium.class);
-    delete compendium.version;
+var yql_url = 'https://query.yahooapis.com/v1/public/yql';
+var url = 'http://dl.dropboxusercontent.com/s/skhhsn2qi3ngcmx/data.json&raw=1';
 
-    setupTA();
-    populateBrowseMenus();
-  })
+jQuery(document).ready(function($){
+  if(sessionStorage.getItem("compendium") == null || sessionStorage.getItem("compendium") == "undefined"){
+    $.when(
+      $.ajax({
+        type: 'GET',
+        cache: true,
+        url: 'https://jsonp.afeld.me/?url=http://dl.dropboxusercontent.com/s/skhhsn2qi3ngcmx/data.json&raw=1',
+        dataType: 'jsonp',
+      })
+      // $.ajax({
+      //   'url': yql_url,
+      //   'data': {
+      //     'q': 'SELECT * FROM json WHERE url="'+url+'"',
+      //     'format': 'json',
+      //     'jsonCompat': 'new',
+      //   },
+      //   'dataType': 'jsonp',
+      //   'success': function(response) {
+      //     console.log(response);
+      //   },
+      // })
+    ).then(function(data){
+      //cache JSON for faster load times
+      sessionStorage.setItem("compendium", JSON.stringify(data));
+      //assign JSON object
+      init(data);
+    })
+  }else{ //pull from local cache
+    init(JSON.parse(sessionStorage.getItem("compendium")));
+  }
 
   $('.typeahead').bind("typeahead:active", function(ev){
     $('.typeahead').typeahead('val', '');
@@ -34,10 +40,28 @@ jQuery(document).ready(function($){
 
   $('.typeahead').bind('typeahead:select', function(ev, suggestion) {
     var sp = getInfo(suggestion);
-
     createCard(sp);
   });
 });
+
+function init(data){
+  compendium = data;
+
+  setupTA();
+  populateBrowseMenus();
+
+  //grab query params from URL, if someone linked you to a thing
+  var q = decodeURI(location.search.substring(3)); // format: ?q=  - this is stripped out
+  if(q != ""){
+    $('.typeahead').typeahead('val', q);
+    createCard(getInfo(q));
+  }
+}
+
+function search(query){
+  $('.typeahead').typeahead('val', query);
+  createCard(getInfo(query));
+}
 
 function createCard(info){
   $("#results").empty();
@@ -45,22 +69,38 @@ function createCard(info){
   var firstText = true;
 
   // use reflection to build out info card
-  for(var data in info){;
-    if(data != "text"){
-      $("#results").append("<label for="+data+">"+data.toTitleCase()+":&nbsp;</label><span id=" + data + ">"+info[data]+"</span><br />");
-    }else{ //if node is text node...
-      if(firstText == false){
-        $("#results").append("<p>" + info[data] + "</p>");
-      }else{
-        $("#results").append("<label for="+data+">Description:&nbsp;</label><span id='description'>"+info[data]+"</span>");
-        firstText = false;
+  for(var data in info){
+    if(typeof info[data] == "string"){ // simple k, v pair
+      $("#results").append("<div class='card-"+data+"'><span id='card-"+data+"-key'><b>" + data.toTitleCase() + "</b>:&nbsp;</span><span id='card-"+data+"-value'>" + info[data] + "</span></div>");
+      $("#card-link");
+    }else if(data == "text"){
+      for(var str in info[data]){
+        $("#results").append("<div>"+info[data][str]+"</div>")
       }
+    }else if(info[data] != undefined){ // has object or array of objects inside val
+      var str = "<table><tbody><tr><th class='trait'>"+data.toTitleCase()+":</th><td><table><tbody><tr>";
+      for(var k in info[data]){
+        var val = info[data][k];
+        if(val == "") continue;
+        if(val.name){
+          str += "<tr><td><b>" + val.name + "</b></td></tr>";
+        }
+        if(val.text){
+          str += "<tr><td>"+val.text+"</td></tr>";
+        }
+        if(val.attack){
+          str += "<tr><td><i>"+val.attack+"</i></td></tr>";
+        }
+      }
+      str += "</tbody></table></td></tr></tbody></table>";
+      $("#results").append(str);
     }
   }
-
-  //show it too
   $("#results").show();
 
+  //update url in address bar for linking
+  var url = "?q=" + document.getElementById("card-name-value").textContent;
+  window.history.pushState({}, 'D&D 5e Compendium', url);
 }
 
 function setupTA(){
@@ -178,7 +218,7 @@ function populateBrowseMenus(){
   for(var type in compendium){
     str = "";
     for(var data in compendium[type]){
-      str += "<li><a href='#'>" + compendium[type][data].name + "</a></li>";
+      str += "<li><a href='javascript:search(\""+compendium[type][data].name+"\")'>" + compendium[type][data].name + "</a></li>";
     }
     $("#" + type + "-menu").append(str);;
   }
