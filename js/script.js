@@ -1,7 +1,5 @@
-var compendium;
-
-var yql_url = 'https://query.yahooapis.com/v1/public/yql';
-var url = 'http://dl.dropboxusercontent.com/s/skhhsn2qi3ngcmx/data.json&raw=1';
+var compendium = {};
+var url = 'http://dl.dropboxusercontent.com/s/skhhsn2qi3ngcmx/data.json?dl=1';
 
 jQuery(document).ready(function($){
   if(sessionStorage.getItem("compendium") == null || sessionStorage.getItem("compendium") == "undefined"){
@@ -9,24 +7,17 @@ jQuery(document).ready(function($){
       $.ajax({
         type: 'GET',
         cache: true,
-        url: 'https://jsonp.afeld.me/?url=http://dl.dropboxusercontent.com/s/skhhsn2qi3ngcmx/data.json&raw=1',
-        dataType: 'jsonp',
+        // url: 'https://jsonp.afeld.me/?url=http://dl.dropboxusercontent.com/s/skhhsn2qi3ngcmx/data.json&raw=1',
+        url: 'data.json',
+        dataType: 'json',
       })
-      // $.ajax({
-      //   'url': yql_url,
-      //   'data': {
-      //     'q': 'SELECT * FROM json WHERE url="'+url+'"',
-      //     'format': 'json',
-      //     'jsonCompat': 'new',
-      //   },
-      //   'dataType': 'jsonp',
-      //   'success': function(response) {
-      //     console.log(response);
-      //   },
-      // })
     ).then(function(data){
       //cache JSON for faster load times
-      sessionStorage.setItem("compendium", JSON.stringify(data));
+      try{
+        sessionStorage.setItem("compendium", JSON.stringify(data));
+      } catch(e) {
+        console.log("Couldn't cache the JSON file");
+      }
       //assign JSON object
       init(data);
     })
@@ -90,6 +81,26 @@ function createCard(info){
         }
         if(val.attack){
           str += "<tr><td><i>"+val.attack+"</i></td></tr>";
+        }
+        if(val._level){ //primarily for autolevel stuffs
+          // str += "<table><tbody><tr><th>"+k.toTitleCase()+":</th><tr><table><tbody><tr>"
+          str += "<table><tbody><tr><th>Level:"+val._level+"</th><tr><table><tbody><tr>"
+          for(var j in val){
+            if(typeof val[j] == "object"){
+              for(var l in val[j]){ // print name and text, if text is array, loop over that
+                if(typeof val[j][l].text == "object"){
+                  for(var t in val[j][l].text){
+                    str += "<tr><td>"+val[j][l].text[t]+"</td></tr>";    
+                  }
+                }else{
+                  str += "<tr><td><b>"+val[j][l].name+"</b></td></tr></tr><td>"+val[j][l].text+"</td></tr>";  
+                }
+              }
+            }else{
+              // str += "<tr><td>"+val[j].text+"</td></tr>"; //just printing level num? comment out
+            }
+          } 
+          str += "</tr></tbody></table>"
         }
       }
       str += "</tbody></table></td></tr></tbody></table>";
@@ -229,4 +240,4 @@ function populateBrowseMenus(){
 String.prototype.toTitleCase = function ()
 {
     return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-}
+} 
