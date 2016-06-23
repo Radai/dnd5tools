@@ -1,0 +1,22 @@
+{ //template for "rule" objects
+	"rules": [
+		{
+			"name": "",
+			"tags": "",
+			"text": "",
+			"related": [
+				"",
+				""
+			]
+		},
+		{
+			"name": "",
+			"tags": "",
+			"text": "",
+			"related": [
+				"",
+				""
+			]
+		}
+	]
+}
