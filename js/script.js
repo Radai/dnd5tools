@@ -229,7 +229,7 @@ function populateBrowseMenus(){
   for(var type in compendium){
     str = "";
     for(var data in compendium[type]){
-      str += "<li><a href='javascript:search(\""+compendium[type][data].name+"\")'>" + compendium[type][data].name + "</a></li>";
+      str += "<li><a href='javascript:search(\""+compendium[type][data].name.replace(/'/,'&apos;')+"\")'>" + compendium[type][data].name + "</a></li>";
     }
     $("#" + type + "-menu").append(str);;
   }
