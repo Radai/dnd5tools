@@ -1,20 +1,766 @@
-{ //template for "rule" objects
+{
 	"rules": [
 		{
-			"name": "",
-			"tags": "",
-			"text": "",
+			"name": "Strength",
+			"tags": "ability",
+			"text": "Measures bodily power, athletic training, and the extent to which you can exert raw physical force. A Strength check can model any attempt to lift, push, pull, or break something, to force your body through a space, or to otherwise apply brute force to a situation. For example, high Strength usually corresponds with a burly or athletic body, while a character with low Strength might be scrawny or plump",
 			"related": [
-				"",
+				"Athletics (Strength)"
+			]
+		},{
+			"name": "Athletics (Strength)",
+			"tags": "skill",
+			"text": "Your Strength (Athletics) check covers difficult situations you encounter while climbing, jumping, or swimming.<br /><br />Examples include the following activities:<ul><li>You attempt to climb a sheer or slippery cliff, avoid hazards while scaling a wall, or cling to a surface while</li><li>something is trying to knock you off.</li><li>You try to jump an unusually long distance or pull off a stunt mid-jump.</li><li>You struggle to swim or stay afloat in treacherous currents, storm-tossed waves, or areas of thick seaweed.<br />Or another creature tries to push or pull you underwater or otherwise interfere with your swimming.</li></ul>",
+			"related": [
+				"Strength"
+			]
+		},{
+			"name": "Dexterity",
+			"tags": "ability",
+			"text": "Measuring agility, reflexes, and balance. A Dexterity check can model any attempt to move nimbly, quickly, or quietly, or to keep from falling on tricky footing. A character with high Dexterity is probably lithe and slim, while a character with low Dexterity might be either gangly and awkward or heavy and thick-fingered.<br /><br />General Dexterity:<ul><li>Control a heavily laden cart on a steep descent</li><li>Steer a chariot around a tight turn</li><li>Pick a lock</li><li>Disable a trap</li><li>Securely tie up a prisoner</li><li>Wriggle free of bonds</li><li>Play a stringed instrument</li><li>Craft a small or detailed object</li></ul>",
+			"related": [
+				"Acrobatics (Dexterity)", "Sleight of Hand (Dexterity)", "Stealth (Dexterity)"
+			]
+		},{
+			"name": "Acrobatics (Dexterity)",
+			"tags": "skill",
+			"text": "Your Dexterity (Acrobatics) check covers your attempt to stay on your feet in a tricky situation, such as when you’re trying to run across a sheet of ice, balance on a tightrope, or stay upright on a rocking ship’s deck. The DM might also call for a Dexterity (Acrobatics) check to see if you can perform acrobatic stunts, including dives, rolls, somersaults, and flips.",
+			"related": [
+				"Dexterity"
+			]
+		},{
+			"name": "Sleight of Hand (Dexterity)",
+			"tags": "skill",
+			"text": "Whenever you attempt an act of legerdemain or manual trickery, such as planting something on someone else or concealing an object on your person, make a Dexterity (Sleight of Hand) check. The DM might also call for a Dexterity (Sleight of Hand) check to determine whether you can lift a coin purse off another person or slip something out of another person’s pocket.",
+			"related": [
+				"Dexterity"
+			]
+		},{
+			"name": "Stealth (Dexterity)",
+			"tags": "skill",
+			"text": "Make a Dexterity (Stealth) check when you attempt to conceal yourself from enemies, slink past guards, slip away without being noticed, or sneak up on someone without being seen or heard.<h2>Hiding</h2>The DM decides when circumstances are appropriate for hiding. When you try to hide, make a Dexterity (Stealth) check. Until you are discovered or you stop hiding, that check’s total is contested by the Wisdom (Perception) check of any creature that actively searches for signs of your presence.<br/>You can’t hide from a creature that can see you clearly, and you give away your position if you make noise, such as shouting a warning or knocking over a vase. An invisible creature can’t be seen, so it can always try to hide. Signs of its passage might still be noticed, however, and it still has to stay quiet.<br/><br/>In combat, most creatures stay alert for signs of danger all around, so if you come out of hiding and approach a creature, it usually sees you. However, under certain circumstances, the Dungeon Master might allow you to stay hidden as you approach a creature that is distracted, allowing you to gain advantage on an attack before you are seen.<br/><br/>Passive Perception. When you hide, there’s a chance someone will notice you even if they aren’t searching. To determine whether such a creature notices you, the DM compares your Dexterity (Stealth) check with that creature’s passive Wisdom (Perception) score, which equals 10 + the creature’s Wisdom modifier, as well as any other bonuses or penalties. If the creature has advantage, add 5. For disadvantage, subtract 5.<br/><br/>For example, if a 1st-level character (with a proficiency bonus of +2) has a Wisdom of 15 (a +2 modifier) and proficiency in Perception, he or she has a passive Wisdom (Perception) of 14.<br/><br/>What Can You See? One of the main factors in determining whether you can find a hidden creature or object is how well you can see in an area, which might be lightly or heavily obscured, as explained in chapter 8.",
+			"related": [
+				"Dexterity"
+			]
+		},{
+			"name": "Constitution",
+			"tags": "ability",
+			"text": "Measuring endurance (health, stamina, and vital force.) Constitution checks are uncommon, and no skills apply to Constitution checks, because the endurance this ability represents is largely passive rather than involving a specific effort on the part of a character or monster. A Constitution check can model your attempt to push beyond normal limits, however. A character with high Constitution usually looks healthy, with bright eyes and abundant energy. A character with low Constitution might be sickly or frail. <br/><br/>General Constitution: <ul><li>Hold your breath</li><li>March or labor for hours without rest</li><li>Go without sleep</li><li>Survive without food or water</li><li>Quaff an entire stein of ale in one go</li></ul><h2>Hit Points</h2>Your Constitution modifier contributes to your hit points. Typically, you add your Constitution modifier to each Hit Die you roll for your hit points.<br/><br/><span class='rule-note'>If your Constitution modifier changes, your hit point maximum changes as well, as though you had the new modifier from 1st level.</span> For example, if you raise your Constitution score when you reach 4th level and your Constitution modifier increases from +1 to +2, you adjust your hit point maximum as though the modifier had always been +2. So you add 3 hit points for your first three levels, and then roll your hit points for 4th level using your new modifier. Or if you’re 7th level and some effect lowers your Constitution score so as to reduce your Constitution modifier by 1, your hit point maximum is reduced by 7.",
+			"related": [
 				""
 			]
-		},
-		{
-			"name": "",
+		},{
+			"name": "Wisdom",
+			"tags": "ability",
+			"text": "Measuring perception and insight. <br/>Wisdom reflects how attuned you are to the world around you and represents perceptiveness and intuition. <br/>A Wisdom check might reflect an effort to read body language, understand someone’s feelings, notice things about the environment, or care for an injured person. <br/>A character with high Wisdom has good judgment, empathy, and a general awareness of what’s going on. A character with low Wisdom might be absent-minded, foolhardy, or oblivious.<br/><br/>General Wisdom:<ul><li>Get a gut feeling about what course of action to follow</li><li>Discern whether a seemingly dead or living creature is undead</li></ul><h2>Spellcasting Ability</h2>Clerics, Druids, and Rangers use Wisdom as their spellcasting ability, which helps determine the saving throw DCs of spells they cast.<h2>Finding a Hidden Object</h2>When your character searches for a hidden object such as a secret door or a trap, the DM typically asks you to make a Wisdom (Perception) check. Such a check can be used to find hidden details or other information and clues that you might otherwise overlook.<br/><br/><span class='rule-note'>In most cases, you need to describe where you are looking in order for the DM to determine your chance of success.</span> For example, a key is hidden beneath a set of folded clothes in the top drawer of a bureau. If you tell the DM that you pace around the room, looking at the walls and furniture for clues, you have no chance of finding the key, regardless of your Wisdom (Perception) check result. You would have to specify that you were opening the drawers or searching the bureau in order to have any chance of success.",
+			"related": [
+				"Animal Handling (Wisdom)", "Insight (Wisdom)", "Medicine (Wisdom)", "Perception (Wisdom)", "Survival (Wisdom)"
+			]
+		},{
+			"name": "Animal Handling (Wisdom)",
+			"tags": "skill",
+			"text": "When there is any question whether you can calm down a domesticated animal, keep a mount from getting spooked, or intuit an animal’s intentions, the DM might call for a Wisdom Animal Handling) check. You also make a Wisdom (Animal Handling) check to control your mount when you attempt a risky maneuver.",
+			"related": [
+				"Wisdom"
+			]
+		},{
+			"name": "Insight (Wisdom)",
+			"tags": "skill",
+			"text": "Your Wisdom (Insight) check decides whether you can determine the true intentions of a creature, such as when searching out a lie or predicting someone’s next move. Doing so involves gleaning clues from body language, speech habits, and changes in mannerisms.",
+			"related": [
+				"Wisdom"
+			]
+		},{
+			"name": "Medicine (Wisdom)",
+			"tags": "skill",
+			"text": "A Wisdom (Medicine) check lets you try to stabilize a dying companion or diagnose an illness.",
+			"related": [
+				"Wisdom"
+			]
+		},{
+			"name": "Perception (Wisdom)",
+			"tags": "skill",
+			"text": "Your Wisdom (Perception) check lets you spot, hear, or otherwise detect the presence of something. It measures your general awareness of your surroundings and the keenness of your senses. For example, you might try to hear a conversation through a closed door, eavesdrop under an open window, or hear monsters moving stealthily in the forest. Or you might try to spot things that are obscured or easy to miss, whether they are orc s lying in ambush on a road, thugs hiding in the shadows of an alley, or candlelight under a closed secret door.",
+			"related": [
+				"Wisdom"
+			]
+		},{
+			"name": "Survival (Wisdom)",
+			"tags": "skill",
+			"text": "The DM might ask you to make a Wisdom (Survival) check to follow tracks, hunt wild game, guide your group through frozen wastelands, identify signs that owlbears live nearby, predict the weather, or avoid quicksand and other natural hazards.",
+			"related": [
+				"Wisdom"
+			]
+		},{
+			"name": "Charisma",
+			"tags": "ability",
+			"text": "Measuring force of personality.<br/>Charisma measures your ability to interact effectively with others. It includes such factors as confidence and eloquence, and it can represent a charming or commanding personality.<br/>A Charisma check might arise when you try to influence or entertain others, when you try to make an impression or tell a convincing lie, or when you are navigating a tricky social situation.<br/><br/>A character with high Charisma exudes confidence, which is usually mixed with a graceful or intimidating presence. A character with a low Charisma might come across as abrasive, inarticulate, or timid.<br/>General Charisma:<ul><li>Find the best person to talk to for news, rumors, and gossip</li><li>Blend into a crowd to get the sense of key topics of conversation</li></ul><h2>Spellcasting Ability</h2>Bards, paladins, sorcerers, and warlocks use Charisma as their spellcasting ability, which helps determine the saving throw DCs of spells they cast.",
+			"related": [
+				"Deception (Charisma)", "Intimindation (Charisma)", "Performance (Charisma)", "Persuasion (Charisma)"
+			]
+		},{
+			"name": "Deception (Charisma)",
+			"tags": "skill",
+			"text": "Your Charisma (Deception) check determines whether you can convincingly hide the truth, either verbally or through your actions. This deception can encompass everything from misleading others through ambiguity to telling outright lies. Typical situations include trying to fast-talk a guard, con a merchant, earn money through gambling, pass yourself off in a disguise, dull someone’s suspicions with false assurances, or maintain a straight face while telling a blatant lie.",
+			"related": [
+				"Charisma"
+			]
+		},{
+			"name": "Intimindation (Charisma)",
+			"tags": "skill",
+			"text": "When you attempt to influence someone through overt threats, hostile actions, and physical violence, the DM might ask you to make a Charisma (Intimidation) check. Examples include  trying to pry information out o f a prisoner, convincing street thugs to back down from a confrontation, or using the edge of a broken bottle to convince a sneering vizier to reconsider a decision.",
+			"related": [
+				"Charisma"
+			]
+		},{
+			"name": "Performance (Charisma)",
+			"tags": "skill",
+			"text": "Your Charisma (Performance) check determines how well you can delight an audience with music, dance, acting, storytelling, or some other form of entertainment.",
+			"related": [
+				"Charisma"
+			]
+		},{
+			"name": "Persuasion (Charisma)",
+			"tags": "skill",
+			"text": "When you attempt to influence someone or a group of people with tact, social graces, or good nature, the DM might ask you to make a Charisma (Persuasion) check. Typically, you use persuasion when acting in good faith, to foster friendships, make cordial requests, or exhibit proper etiquette. Examples of persuading others include convincing a chamberlain to let your party see the king, negotiating peace between warring tribes, or inspiring a crowd of townsfolk.",
+			"related": [
+				"Charisma"
+			]
+		},{
+			"name": "Advantage and Disadvantage",
+			"tags": "check",
+			"text": "Sometimes a special ability or spell tells you that you have advantage or disadvantage on an ability check, a saving throw, or an attack roll. When that happens, you roll a second d20 when you make the roll. Use the higher of the two rolls if you have advantage, and use the lower roll if you have disadvantage. For example, if you have disadvantage and roll a 17 and a 5, you use the 5. If you instead have advantage and roll those numbers, you use the 17.<br/><br/>If multiple situations affect a roll and each one grants advantage or imposes disadvantage on it, you don’t roll more than one additional d20. If two favorable situations grant advantage, for example, you still roll only one additional d20.<br/><br/><span class='rule-note'>If circumstances cause a roll to have both advantage and disadvantage, you are considered to have neither of them, and you roll one d20. This is true even if multiple circumstances impose disadvantage and only one grants advantage or vice versa. In such a situation, you have neither advantage nor disadvantage.</span><br/><br/>When you have advantage or disadvantage and something in the game, such as the halfling’s Lucky trait, lets you reroll the d20, you can reroll only one of the dice. You choose which one. For example, if a halfling has advantage or disadvantage on an ability check and rolls a 1 and a 13, the halfling could use the Lucky trait to reroll the 1.<br/><br/>You usually gain advantage or disadvantage through the use of special abilities, actions, or spells. Inspiration can also give a character advantage. The DM can also decide that circumstances influence a roll in one direction or the other and grant advantage or impose disadvantage as a result.",
+			"related": [
+				""
+			]
+		},{
+			"name": "Proficiency",
+			"tags": "check",
+			"text": "Characters have a proficiency bonus determined by level, as detailed in chapter 1. Monsters also have this bonus, which is incorporated in their stat blocks. The bonus is used in the rules on ability checks, saving throws, and attack rolls.<br/><br/>Your proficiency bonus can’t be added to a single die roll or other number more than once. For example, if two different rules say you can add your proficiency bonus to a Wisdom saving throw, you nevertheless add the bonus only once when you make the save.<br/><br/>Occasionally, your proficiency bonus might be multiplied or divided (doubled or halved, for example) before you apply it. For example, the rogue’s Expertise feature doubles the proficiency bonus for certain ability checks. If a circumstance suggests that your proficiency bonus applies more than once to the same roll, you still add it only once and multiply or divide it only once.<br/><br/>By the same token, if a feature or effect allows you to multiply your proficiency bonus when making an ability check that wouldn’t normally benefit from your proficiency bonus, you still don’t add the bonus to the check. For that check your proficiency bonus is 0, given the fact that multiplying 0 by any number is still 0. For instance, if you lack proficiency in the History skill, you gain no benefit from a feature that lets you double your proficiency bonus when you make Intelligence (History) checks.<br/><br/>In general, you don’t multiply your proficiency bonus for attack rolls or saving throws. If a feature or effect allows you to do so, these same rules apply.<br/><br/><span class='rule-note'>Your proficiency bonus is always based on your total character level</span>, as shown in the Character Advancement table in chapter 1, not your level in a particular class. For example, if you are a fighter 3/rogue 2, you have the proficiency bonus of a 5th-level character, which is +3.<br/><br/><h2>Proficiency Bonus</h2>The table that appears in your class description shows your proficiency bonus, which is +2 for a 1st-level character. Your proficiency bonus applies to many of the numbers you’ll be recording on your character sheet:<ul><li>Attack rolls using weapons you’re proficient with</li><li>Attack rolls with spells you cast</li><li>Ability checks using skills you’re proficient in</li><li>Ability checks using tools you’re proficient with</li><li>Saving throws you’re proficient in</li><li>Saving throw DCs for spells you cast (explained in each spellcasting class)</li></ul><br/>Your class determines your weapon proficiencies, your saving throw proficiencies, and some of your skill and tool proficiencies.  Your background gives you additional skill and tool proficiencies, and some races give you more proficiencies. Be sure to note all of these proficiencies, as well as your proficiency bonus, on your character sheet.<br/>Your proficiency bonus can’t be added to a single die roll or other number more than once. Occasionally, your proficiency bonus might be modified (doubled or halved, for example) before you apply it. If a circumstance suggests that your proficiency bonus applies more than once to the same roll or that it should be multiplied more than once, you nevertheless add it only once, multiply it only once, and halve it only once.",
+			"related": [
+				""
+			]
+		},{
+			"name": "Armor Class (AC)",
 			"tags": "",
 			"text": "",
 			"related": [
-				"",
+				""
+			]
+		},{
+			"name": "Actions in Combat",
+			"tags": "action",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Attack",
+			"tags": "action",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Melee Attack",
+			"tags": "action",
+			"text": "",
+			"related": [
+				"attack"
+			]
+		},{
+			"name": "Ranged Attack",
+			"tags": "action",
+			"text": "",
+			"related": [
+				"attack"
+			]
+		},{
+			"name": "Attack Rolls",
+			"tags": "action",
+			"text": "",
+			"related": [
+				"attack"
+			]
+		},{
+			"name": "Grappling",
+			"tags": "action",
+			"text": "",
+			"related": [
+				"attack"
+			]
+		},{
+			"name": "Shoving a Creature",
+			"tags": "action",
+			"text": "",
+			"related": [
+				"attack"
+			]
+		},{
+			"name": "Unarmed Strike",
+			"tags": "action",
+			"text": "",
+			"related": [
+				"attack"
+			]
+		},{
+			"name": "Cast a Spell",
+			"tags": "action",
+			"text": "",
+			"related": [
+				"Actions in Combat"
+			]
+		},{
+			"name": "Dash",
+			"tags": "action",
+			"text": "",
+			"related": [
+				"Actions in Combat"
+			]
+		},{
+			"name": "Disengage",
+			"tags": "action",
+			"text": "",
+			"related": [
+				"Actions in Combat"
+			]
+		},{
+			"name": "Dodge",
+			"tags": "action",
+			"text": "",
+			"related": [
+				"Actions in Combat"
+			]
+		},{
+			"name": "Help",
+			"tags": "action",
+			"text": "",
+			"related": [
+				"Actions in Combat"
+			]
+		},{
+			"name": "Hide",
+			"tags": "action",
+			"text": "",
+			"related": [
+				"Actions in Combat"
+			]
+		},{
+			"name": "Ready",
+			"tags": "action",
+			"text": "",
+			"related": [
+				"Actions in Combat"
+			]
+		},{
+			"name": "Search",
+			"tags": "action",
+			"text": "",
+			"related": [
+				"Actions in Combat"
+			]
+		},{
+			"name": "Use an Object",
+			"tags": "action",
+			"text": "",
+			"related": [
+				"Actions in Combat"
+			]
+		},{
+			"name": "Bonus Action",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Two-Weapon Fighting",
+			"tags": "bonus action",
+			"text": "",
+			"related": [
+				"Bonus Action"
+			]
+		},{
+			"name": "Reactions",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Opportunity Attack",
+			"tags": "reaction",
+			"text": "",
+			"related": [
+				"Reactions"
+			]
+		},{
+			"name": "Movement",
+			"tags": "movement",
+			"text": "",
+			"related": [
+				"Dash"
+			]
+		},{
+			"name": "Conditions",
+			"tags": "",
+			"text": "",
+			"related": [
+				"Blinded","Charmed","Deafened","Exhaustion","Frightened","Grappled","Incapacitated","Invisible","Paralyzed","Petrified","Poisoned","Prone","Restrained","Stunned","Unconscious"
+			]
+		},{
+			"name": "Blinded",
+			"tags": "condition",
+			"text": "",
+			"related": [
+				"Conditions"
+			]
+		},{
+			"name": "Charmed",
+			"tags": "condition",
+			"text": "",
+			"related": [
+				"Conditions"
+			]
+		},{
+			"name": "Deafened",
+			"tags": "condition",
+			"text": "",
+			"related": [
+				"Conditions"
+			]
+		},{
+			"name": "Exhaustion",
+			"tags": "condition",
+			"text": "",
+			"related": [
+				"Conditions"
+			]
+		},{
+			"name": "Frightened",
+			"tags": "condition",
+			"text": "",
+			"related": [
+				"Conditions"
+			]
+		},{
+			"name": "Grappled",
+			"tags": "condition",
+			"text": "",
+			"related": [
+				"Conditions"
+			]
+		},{
+			"name": "Incapacitated",
+			"tags": "condition",
+			"text": "",
+			"related": [
+				"Conditiions"
+			]
+		},{
+			"name": "Invisible",
+			"tags": "condition",
+			"text": "",
+			"related": [
+				"Conditions"
+			]
+		},{
+			"name": "Paralyzed",
+			"tags": "condition",
+			"text": "",
+			"related": [
+				"Conditions"
+			]
+		},{
+			"name": "Petrified",
+			"tags": "condition",
+			"text": "",
+			"related": [
+				"Conditions"
+			]
+		},{
+			"name": "Poisoned",
+			"tags": "condition",
+			"text": "",
+			"related": [
+				"Conditions"
+			]
+		},{
+			"name": "Prone",
+			"tags": "condition",
+			"text": "",
+			"related": [
+				"Conditions"
+			]
+		},{
+			"name": "Restrained",
+			"tags": "condition",
+			"text": "",
+			"related": [
+				"Conditions"
+			]
+		},{
+			"name": "Stunned",
+			"tags": "condition",
+			"text": "",
+			"related": [
+				"Conditions"
+			]
+		},{
+			"name": "Unconscious",
+			"tags": "condition",
+			"text": "",
+			"related": [
+				"Conditions"
+			]
+		},{
+			"name": "Cover",
+			"tags": "combat",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Damage and Healing",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Critical Rolls",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Damage Types",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Resistance and Vulnerability",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Temporary Hit Points",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Objects",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Death and Dying",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Healing",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Mounted Combat",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Underwater Combat and Visibility",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Poisons",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Stealth and Surprise",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Movement: Jumping, Climbing, Swimming",
+			"tags": "",
+			"text": "",
+			"related": [
+				"Difficult Terrain"
+			]
+		},{
+			"name": "Difficult Terrain",
+			"tags": "",
+			"text": "",
+			"related": [
+				"Movement: Jumping, Climbing, Swimming"
+			]
+		},{
+			"name": "Environmental Hazards",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Light and Vision",
+			"tags": "",
+			"text": "",
+			"related": [
+				"Dark-vision"
+			]
+		},{
+			"name": "Dark-vision",
+			"tags": "",
+			"text": "",
+			"related": [
+				"Light and Vision"
+			]
+		},{
+			"name": "Traveling",
+			"tags": "",
+			"text": "",
+			"related": [
+				"Traveling Activities"
+			]
+		},{
+			"name": "Traveling Activities",
+			"tags": "",
+			"text": "",
+			"related": [
+				"Traveling"
+			]
+		},{
+			"name": "Time",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Food and Water, Hunger and Thirst",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Traps",
+			"tags": "",
+			"text": "",
+			"related": [
+				"Trap Mechanics"
+			]
+		},{
+			"name": "Trap Mechanics",
+			"tags": "",
+			"text": "",
+			"related": [
+				"Traps"
+			]
+		},{
+			"name": "Underwater",
+			"tags": "",
+			"text": "",
+			"related": [
+				"Underwater Combat and Visibility"
+			]
+		},{
+			"name": "Resting",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Downtime",
+			"tags": "",
+			"text": "",
+			"related": [
+				"Crafting", "Recuperating", "Researching", "Practicing a Profession", "Training"
+			]
+		},{
+			"name": "Crafting",
+			"tags": "",
+			"text": "",
+			"related": [
+				"Downtime"
+			]
+		},{
+			"name": "Recuperating",
+			"tags": "",
+			"text": "",
+			"related": [
+				"Downtime"
+			]
+		},{
+			"name": "Researching",
+			"tags": "",
+			"text": "",
+			"related": [
+				"Downtime"
+			]
+		},{
+			"name": "Practicing a Profession",
+			"tags": "",
+			"text": "",
+			"related": [
+				"Downtime"
+			]
+		},{
+			"name": "Training",
+			"tags": "",
+			"text": "",
+			"related": [
+				"Downtime"
+			]
+		},{
+			"name": "Lifestyle",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Diseases",
+			"tags": "",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Madness",
+			"tags": "",
+			"text": "",
+			"related": [
+				"Effects of Madness", "Curing Madness"
+			]
+		},{
+			"name": "Effects of Madness",
+			"tags": "",
+			"text": "",
+			"related": [
+				"Madness"
+			]
+		},{
+			"name": "Curing Madness",
+			"tags": "",
+			"text": "",
+			"related": [
+				"Madness"
+			]
+		},{
+			"name": "Coins and Currency",
+			"tags": "store",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Selling Treasure",
+			"tags": "store",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Armor",
+			"tags": "store",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Equipment",
+			"tags": "store",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Food, Drink, and Lodging",
+			"tags": "store",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Mounts and Vehicles",
+			"tags": "store",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Poisons (Store)",
+			"tags": "store",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Spellcasting Services",
+			"tags": "store",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Tools",
+			"tags": "store",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Trade Goods",
+			"tags": "store",
+			"text": "",
+			"related": [
+				""
+			]
+		},{
+			"name": "Trinkets",
+			"tags": "store",
+			"text": "",
+			"related": [
+				"Trinkets: Gothic"
+			]
+		},{
+			"name": "Trinkets: Gothic",
+			"tags": "store",
+			"text": "",
+			"related": [
+				"Trinkets"
+			]
+		},{
+			"name": "Weapons",
+			"tags": "store",
+			"text": "",
+			"related": [
 				""
 			]
 		}
