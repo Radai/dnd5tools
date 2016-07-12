@@ -58,6 +58,7 @@ ul#changelog-list{
 ul#changelog-list li{
     padding-left: 1em;
     text-indent: -1em;
+    color: #B2B2B2;
 }
 
 .popover {
