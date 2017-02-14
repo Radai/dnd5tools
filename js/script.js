@@ -141,7 +141,7 @@ function itemSubTable(val){
             for(var t in val[j][l].text){
               str += "<tr><td>"+val[j][l].text[t]+"</td></tr>";
             }
-          }else{
+          }else if (val[j][l].name && val[j][l].text){
             str += "<tr><td><b>"+val[j][l].name+"</b></td></tr></tr><td>"+val[j][l].text+"</td></tr>";
           }
         }
