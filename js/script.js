@@ -97,38 +97,13 @@ function createCard(info){
         }
       }else if(info[data] != undefined){ // has object or array of objects inside val
         var str = "<table><tbody><tr><th class='trait'>"+data.toTitleCase()+":</th><td><table><tbody><tr>";
-        for(var k in info[data]){
-          var val = info[data][k];
-          if(val == "") continue;
-          if(val.name){
-            str += "<tr><td><b>" + val.name + "</b></td></tr>";
+        if (Array.isArray(info[data])){
+          for(var k in info[data]){
+            var val = info[data][k];
+            str += itemSubTable(val);
           }
-          if(val.text){
-            str += "<tr><td>"+val.text+"</td></tr>";
-          }
-          if(val.attack){
-            str += "<tr><td><i>"+val.attack+"</i></td></tr>";
-          }
-          if(val._level){ //primarily for autolevel stuffs
-            // str += "<table><tbody><tr><th>"+k.toTitleCase()+":</th><tr><table><tbody><tr>"
-            str += "<table><tbody><tr><th>Level:"+val._level+"</th><tr><table><tbody><tr>"
-            for(var j in val){
-              if(typeof val[j] == "object"){
-                for(var l in val[j]){ // print name and text, if text is array, loop over that
-                  if(typeof val[j][l].text == "object"){
-                    for(var t in val[j][l].text){
-                      str += "<tr><td>"+val[j][l].text[t]+"</td></tr>";    
-                    }
-                  }else{
-                    str += "<tr><td><b>"+val[j][l].name+"</b></td></tr></tr><td>"+val[j][l].text+"</td></tr>";  
-                  }
-                }
-              }else{
-                // str += "<tr><td>"+val[j].text+"</td></tr>"; //just printing level num? comment out
-              }
-            } 
-            str += "</tr></tbody></table>"
-          }
+        }else if (typeof info[data] ==='object'){
+          str += itemSubTable(info[data]);
         }
         str += "</tbody></table></td></tr></tbody></table>";
         $("#results").append(str);
@@ -141,6 +116,42 @@ function createCard(info){
   //update url in address bar for linking
   var url = "?q=" + document.getElementById("card-name-value").textContent;
   window.history.pushState({}, 'D&D 5e Compendium', url);
+}
+
+
+function itemSubTable(val){
+  var str = "";
+  if(val == "") return "";
+  if(val.name){
+    str += "<tr><td><b>" + val.name + "</b></td></tr>";
+  }
+  if(val.text){
+    str += "<tr><td>"+val.text+"</td></tr>";
+  }
+  if(val.attack){
+    str += "<tr><td><i>"+val.attack+"</i></td></tr>";
+  }
+  if(val._level){ //primarily for autolevel stuffs
+    // str += "<table><tbody><tr><th>"+k.toTitleCase()+":</th><tr><table><tbody><tr>"
+    str += "<table><tbody><tr><th>Level:"+val._level+"</th><tr><table><tbody><tr>"
+    for(var j in val){
+      if(typeof val[j] == "object"){
+        for(var l in val[j]){ // print name and text, if text is array, loop over that
+          if(typeof val[j][l].text == "object"){
+            for(var t in val[j][l].text){
+              str += "<tr><td>"+val[j][l].text[t]+"</td></tr>";
+            }
+          }else{
+            str += "<tr><td><b>"+val[j][l].name+"</b></td></tr></tr><td>"+val[j][l].text+"</td></tr>";
+          }
+        }
+      }else{
+        // str += "<tr><td>"+val[j].text+"</td></tr>"; //just printing level num? comment out
+      }
+    }
+    str += "</tr></tbody></table>"
+  }
+  return str;
 }
 
 function setupTA(){
@@ -244,7 +255,7 @@ function substringMatcher(strs){
     });
 
     cb(matches);
-  };  
+  };
 }
 
 function ruleSubstringMatcher(strs){
@@ -302,4 +313,4 @@ function populateChangelog(){
 String.prototype.toTitleCase = function ()
 {
     return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-} 
+}
