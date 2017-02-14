@@ -86,7 +86,9 @@ function createCard(info){
         $("#results").append("<div class='card-"+k+"'><span id='card-"+k+"-key'><b>" + k.toTitleCase() + "</b>:&nbsp;</span><span id='card-"+k+"-value'>" + v + "</span></div>");
       }
     })
-  }else{
+  }else if (type=="monster"){
+    $("#results").append(createMonsterCard(info));
+  }else {
   // use reflection to build out info card
   for(var data in info){
       if(typeof info[data] == "string"){ // simple k, v pair
@@ -152,6 +154,213 @@ function itemSubTable(val){
     str += "</tr></tbody></table>"
   }
   return str;
+}
+
+//Custom layout for monster cards
+function createMonsterCard(monster){
+  var str="";
+  str += "<div class=\"card-name\"><span id=\"card-name-value\">"+monster.name+"</span></div>";
+
+  str += "<i>"+monsterSize(monster.size.toUpperCase())+", "+ monster.alignment+"</i><br>";
+  if (monster.ac) str += printMonsterStat("Armor Class", monster.ac);
+  if (monster.hp) str += printMonsterStat("Hit Points", monster.hp);
+  if (monster.speed) str += printMonsterStat("Speed", monster.speed);
+  str += "<hr>";
+
+  //statblock
+  str +="<div id=\"statblock\">";
+    str +="<div><b>STR</b><br>"+monster.str+"("+(monster.str>9?"+":"")+Math.floor(((monster.str)-10)/2)+")</div>";
+    str +="<div><b>DEX</b><br>"+monster.dex+"("+(monster.dex>9?"+":"")+Math.floor(((monster.dex)-10)/2)+")</div>";
+    str +="<div><b>CON</b><br>"+monster.con+"("+(monster.con>9?"+":"")+Math.floor(((monster.con)-10)/2)+")</div>";
+    str +="<div><b>INT</b><br>"+monster.int+"("+(monster.int>9?"+":"")+Math.floor(((monster.int)-10)/2)+")</div>";
+    str +="<div><b>WIS</b><br>"+monster.wis+"("+(monster.wis>9?"+":"")+Math.floor(((monster.wis)-10)/2)+")</div>";
+    str +="<div><b>CHA</b><br>"+monster.cha+"("+(monster.cha>9?"+":"")+Math.floor(((monster.cha)-10)/2)+")</div>";
+  str +="</div>"
+  str += "<hr>";
+
+  if (monster.save) str += printMonsterStat("Saving Throws", monster.save);
+  if (monster.skill) str += printMonsterStat("Skills", monster.skill);
+  if (monster.vulnerable) str += printMonsterStat("Damage Vulnerabilities", monster.vulnerable);
+  if (monster.resist) str += printMonsterStat("Damage Resistances", monster.resist);
+  if (monster.immune) str += printMonsterStat("Damage Immunities", monster.immune);
+  if (monster.conditionImmune) str += printMonsterStat("Condition Immunities", monster.conditionImmune);
+  str+= "<b>Senses</b> ";
+  if (monster.senses) str +=  monster.senses;
+  if (monster.senses && monster.passive) str +=", ";
+  if (monster.passive) str += "passive Perception "+monster.passive;
+  str+= "<br>\n";
+  if (monster.languages) str += printMonsterStat("Languages", monster.languages);
+  if (monster.cr) str += `<b>Challenge</b> ${monster.cr}(${xpByCR(monster.cr).toLocaleString()} XP)`;
+
+
+  //traits
+  if(monster.trait){
+    str +="<hr>";
+    if (Array.isArray(monster.trait)){
+      for(i in monster.trait){
+        str += printMonsterDetail(monster.trait[i].name, monster.trait[i].text);
+      }
+    }else{
+      str += printMonsterDetail(monster.trait.name, monster.trait.text);
+    }
+  }
+
+  //Actions
+  if(monster.action){
+    str += "<div class=\"monster-sub-title\">Actions</div>";
+    if (Array.isArray(monster.action)){
+      for(i in monster.action){
+        str += printMonsterDetail(monster.action[i].name, monster.action[i].text);
+      }
+    }else{
+      str += printMonsterDetail(monster.action.name, monster.action.text);
+    }
+  }
+
+  //Reactions
+  if(monster.reaction){
+    str += "<div class=\"monster-sub-title\">Reactions</div>";
+    if (Array.isArray(monster.reaction)){
+      for(i in monster.reaction){
+        str += printMonsterDetail(monster.reaction[i].name, monster.reaction[i].text);
+      }
+    }else{
+      str += printMonsterDetail(monster.reaction.name, monster.reaction.text);
+    }
+  }
+  //Legendary
+  if(monster.legendary){
+    str += "<div class=\"monster-sub-title\">Legendary Actions</div>";
+    if (Array.isArray(monster.legendary)){
+      for(i in monster.legendary){
+        str += printMonsterDetail(monster.legendary[i].name, monster.legendary[i].text);
+      }
+    }else{
+      str += printMonsterDetail(monster.legendary.name, monster.legendary.text);
+    }
+  }
+
+
+  return str;
+}
+
+function printMonsterStat(name, value){
+    return `<b>${name}</b> ${value}<br>\n`;
+}
+
+function printMonsterDetail(name, value){
+  if (Array.isArray(value)){
+    var str = "<div class=\"monster-detail\"><b><i>"+name+"</i></b>";
+    for(line in value){
+      if (value[line]=== "") continue;
+      str +=" "+ value[line]+"<br>";
+    }
+    str += "</div>";
+    return str;
+  }else{
+    return `<div class="monster-detail"><b><i>${name}.</i></b> ${value}</div>\n`;
+  }
+}
+
+function xpByCR(cr){
+  switch(cr){
+    case "0":
+      return 10;
+    case "1/8":
+      return 25;
+    case "1/4":
+      return 50;
+    case "1/2":
+      return 100;
+    case "1":
+      return 200;
+    case "2":
+      return 450;
+    case "3":
+      return 700;
+    case "4":
+      return 1100;
+    case "5":
+      return 1800;
+    case "6":
+      return 2300;
+    case "7":
+      return 2900;
+    case "8":
+      return 3900;
+    case "9":
+      return 5000;
+    case "10":
+      return 5900;
+    case "11":
+      return 7200;
+    case "12":
+      return 8400;
+    case "13":
+      return 10000;
+    case "14":
+      return 11500;
+    case "15":
+      return 13000;
+    case "16":
+      return 15000;
+    case "17":
+      return 18000;
+    case "18":
+      return 20000;
+    case "19":
+      return 22000;
+    case "20":
+      return 25000;
+    case "21":
+      return 33000;
+    case "22":
+      return 41000;
+    case "23":
+      return 50000;
+    case "24":
+      return 62000;
+    case "25":
+      return 75000;
+    case "26":
+      return 90000;
+    case "27":
+      return 105000;
+    case "28":
+      return 120000;
+    case "29":
+      return 135000;
+    case "30":
+      return 155000;
+    default:
+      return 0;
+  }
+}
+
+function monsterSize(size){
+  switch(size){
+    case 'T':
+      size = "Tiny";
+      break;
+    case 'S':
+      size = "Small";
+      break;
+    case 'M':
+      size = "Medium";
+      break;
+    case 'L':
+      size = "Large";
+      break;
+    case 'H':
+      size = "Huge";
+      break;
+    case 'G':
+      size = "Gargantuan";
+      break;
+    default:
+      size = "Unknown";
+  }
+  return size;
 }
 
 function setupTA(){

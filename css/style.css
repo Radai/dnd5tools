@@ -196,3 +196,31 @@ table {
     font-family: 'dalelands';
     src: url('../fonts/dalelands/Dalelands Uncial.otf');
 }
+
+#statblock {
+    width: 80%;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    align-self: center;
+}
+
+#statblock div {
+    -webkit-flex: 1;  /* Safari 6.1+ */
+    -ms-flex: 1;  /* IE 10 */
+    flex: 1;
+    align-self: center;
+    text-align: center;
+}
+
+.monster-sub-title {
+    border-bottom: 1px solid #58180D;
+    margin-bottom: 5px;
+    color: #58180D;
+    font-weight: 600;
+    font-family: MrJeeves;
+    font-size: 30px;
+}
+
+.monster-detail {
+  margin-bottom: 10px;
+}
