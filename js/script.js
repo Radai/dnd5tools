@@ -513,7 +513,7 @@ function populateBrowseMenus(){
 
 function populateChangelog(){
   $("#changelog").popover({
-    content: '<ul id="changelog-list"><li><h6>July 12, 2016</h6>Added beginning of ruleset, look for abilities/skills. Added this. Search for Conditions to try out something cool. Hope you like!</li></ul>'
+    content: '<ul id="changelog-list"><li><h6>February 24, 2017</h6>Merged style <a href="https://github.com/Radai/dnd5tools/pull/24" target="_blank">changes</a> from <a href="https://github.com/groke" target="_blank">groke</a> which make monsters look more like they do in the book. Fixed searching for the Shield spell and getting the item, if you want the item it\'s under Shield (item) now, otherwise hey, it\'s +2 to AC, duh.</li><li><h6>July 12, 2016</h6>Added beginning of ruleset, look for abilities/skills. Added this. Search for Conditions to try out something cool. Hope you like!</li></ul>'
   });
 }
 
