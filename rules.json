@@ -96,7 +96,7 @@
 			"tags": "ability",
 			"text": "Measuring force of personality.<br/>Charisma measures your ability to interact effectively with others. It includes such factors as confidence and eloquence, and it can represent a charming or commanding personality.<br/>A Charisma check might arise when you try to influence or entertain others, when you try to make an impression or tell a convincing lie, or when you are navigating a tricky social situation.<br/><br/>A character with high Charisma exudes confidence, which is usually mixed with a graceful or intimidating presence. A character with a low Charisma might come across as abrasive, inarticulate, or timid.<br/>General Charisma:<ul><li>Find the best person to talk to for news, rumors, and gossip</li><li>Blend into a crowd to get the sense of key topics of conversation</li></ul><h2>Spellcasting Ability</h2>Bards, paladins, sorcerers, and warlocks use Charisma as their spellcasting ability, which helps determine the saving throw DCs of spells they cast.",
 			"related": [
-				"Deception (Charisma)", "Intimindation (Charisma)", "Performance (Charisma)", "Persuasion (Charisma)"
+				"Deception (Charisma)", "Intimidation (Charisma)", "Performance (Charisma)", "Persuasion (Charisma)"
 			]
 		},{
 			"name": "Deception (Charisma)",
@@ -106,7 +106,7 @@
 				"Charisma"
 			]
 		},{
-			"name": "Intimindation (Charisma)",
+			"name": "Intimidation (Charisma)",
 			"tags": "skill",
 			"text": "When you attempt to influence someone through overt threats, hostile actions, and physical violence, the DM might ask you to make a Charisma (Intimidation) check. Examples include  trying to pry information out o f a prisoner, convincing street thugs to back down from a confrontation, or using the edge of a broken bottle to convince a sneering vizier to reconsider a decision.",
 			"related": [
