@@ -398,7 +398,7 @@ function setupTA(){
   {
     name: 'items',
     source: substringMatcher(compendium.item),
-    limit: 5,
+    limit: 10,
     templates: {
       header: '<h4 id="queryheader">Items</h4>'
     }
@@ -414,7 +414,7 @@ function setupTA(){
   {
     name: 'feats',
     source: substringMatcher(compendium.feat),
-    limit: 5,
+    limit: 4,
     templates: {
       header: '<h4 id="queryheader">Feats</h4>'
     }
