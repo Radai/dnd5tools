@@ -71,8 +71,8 @@ input.typeahead, .twitter-typeahead {
 
 h1.header-font {
     font-family: dalelands;
-    font-size: 64px;
-    font-size: 5.25vw;
+    font-size: 52px;
+    font-size: calc(2vw + 2vh);
     text-align: center;
     /*font-weight: bold;*/
     /*color: #444;*/
