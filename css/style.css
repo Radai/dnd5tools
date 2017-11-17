@@ -92,6 +92,14 @@ body {
 
 /* -- Card Styling -- */
 
+#results > .table-striped > tbody > tr:nth-child(2n+1) > td, #results > .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: #F5D486;
+}
+
+#results > .table-hover tbody tr:hover td, #results > .table-hover tbody tr:hover th {
+  background-color: #FFB913;
+}
+
 div#results {
     background-color: #FDF1DC;
     border-radius: 8px;
