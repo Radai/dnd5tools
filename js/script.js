@@ -89,20 +89,50 @@ function createCard(info){
   }else if (type=="monster"){
     $("#results").append(createMonsterCard(info));
   }else {
+    var spelltable;
+    if(info.autolevel && info.autolevel[0].slots){
+      spelltable = $('<table class="table table-responsive table-striped table-hover"><thead><tr><th>Level</th><th>Cantrips</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead><tbody></tbody></table>')
+      for(var i = 6; i < info["autolevel"][0].slots.split(',').length; i++){
+        $(spelltable).find('thead tr').append(`<th>${i}</th>`)
+      }
+    }
   // use reflection to build out info card
   for(var data in info){
       if(typeof info[data] == "string"){ // simple k, v pair
-        $("#results").append("<div class='card-"+data+"'><span id='card-"+data+"-key'><b>" + data.toTitleCase() + "</b>:&nbsp;</span><span id='card-"+data+"-value'>" + info[data] + "</span></div>");
+        if(data != 'rarity'){
+          var val = info[data];
+          if(data=='magic') val = isMagicItem(val);
+          if(data=='weight') val = itemWeightHelper(val);
+          $("#results").append("<div class='card-"+data+"'><span id='card-"+data+"-key'><b>" + data.toTitleCase() + "</b>:&nbsp;</span><span id='card-"+data+"-value'>" + val + "</span></div>");
+        }
       }else if(data == "text"){
         for(var str in info[data]){
           $("#results").append("<div>"+info[data][str]+"</div>")
         }
       }else if(info[data] != undefined){ // has object or array of objects inside val
-        var str = "<table><tbody><tr><th class='trait'>"+data.toTitleCase()+":</th><td><table><tbody><tr>";
+        var inChar = false;
+        if(data == 'autolevel'){
+          for(var levelslots in info[data]){
+            if(info[data][levelslots].slots){ //this is a spell slot descriptor
+              inChar = true;
+              var slots = info[data][levelslots].slots.split(',');
+
+              var optional = slots.length > 6 ? `<td class='col-xs-1'>${slots[6]}</td class='col-xs-1'><td class='col-xs-1'>${slots[7]}</td class='col-xs-1'><td class='col-xs-1'>${slots[8]}</td class='col-xs-1'><td class='col-xs-1'>${slots[9]}</td class='col-xs-1'>` : '';
+              $(spelltable).find('tbody').append(`<tr><th class='col-xs-1'>${info[data][levelslots].level}</th><td class='col-xs-1'>${slots[0]}</td class='col-xs-1'><td class='col-xs-1'>${slots[1]}</td class='col-xs-1'><td class='col-xs-1'>${slots[2]}</td class='col-xs-1'><td class='col-xs-1'>${slots[3]}</td class='col-xs-1'><td class='col-xs-1'>${slots[4]}</td class='col-xs-1'><td class='col-xs-1'>${slots[5]}</td class='col-xs-1'>${optional}</tr>`)
+            }
+          }
+          if(inChar)
+            $('#results').append(spelltable);
+        }
+
+        var opt = data == 'autolevel' ? "" : "<th class='trait'>"+data.toTitleCase()+":</th>";
+        var str = `<table><tbody><tr>${opt}<td><table><tbody><tr>`;
         if (Array.isArray(info[data])){
           for(var k in info[data]){
-            var val = info[data][k];
-            str += itemSubTable(val);
+            if(info[data][k].slots == undefined){
+              var val = info[data][k];
+              str += itemSubTable(val);
+            }
           }
         }else if (typeof info[data] ==='object'){
           str += itemSubTable(info[data]);
@@ -120,6 +150,15 @@ function createCard(info){
   window.history.pushState({}, 'D&D 5e Compendium', url);
 }
 
+function isMagicItem(val){
+  if(1)
+    return "Yes";
+  return "No";
+}
+
+function itemWeightHelper(val){
+  return val + " lbs";
+}
 
 function itemSubTable(val){
   var str = "";
@@ -135,20 +174,29 @@ function itemSubTable(val){
   }
   if(val.level){ //primarily for autolevel stuffs
     // str += "<table><tbody><tr><th>"+k.toTitleCase()+":</th><tr><table><tbody><tr>"
-    str += "<table><tbody><tr><th>Level:"+val.level+"</th><tr><table><tbody><tr>"
-    for(var j in val){
-      if(typeof val[j] == "object"){
-        for(var l in val[j]){ // print name and text, if text is array, loop over that
-          if(typeof val[j][l].text == "object"){
-            for(var t in val[j][l].text){
-              str += "<tr><td>"+val[j][l].text[t]+"</td></tr>";
+    str += "<table><tbody><tr><th><b>Level: "+val.level+"</b></th><tr><table><tbody><tr>"
+    if(val.feature.name){
+      str += "<tr><td><b><i>"+val.feature.name+"</i></b></td>";
+      for(var t in val.feature.text){
+        str += "<tr><td>"+val.feature.text[t]+"</td></tr>";
+      }
+      str+="</tr>"
+    }
+    else{
+      for(var j in val){
+        if(typeof val[j] == "object"){
+          for(var l in val[j]){ // print name and text, if text is array, loop over that
+            if(typeof val[j][l].text == "object"){
+              for(var t in val[j][l].text){
+                str += "<tr><td>"+val[j][l].text[t]+"</td></tr>";
+              }
+            }else if (val[j][l].name && val[j][l].text){
+              str += "<tr><td><b><i>"+val[j][l].name+"</i></b></td></tr></tr><td>"+val[j][l].text+"</td></tr>";
             }
-          }else if (val[j][l].name && val[j][l].text){
-            str += "<tr><td><b>"+val[j][l].name+"</b></td></tr></tr><td>"+val[j][l].text+"</td></tr>";
           }
+        }else{
+          // str += "<tr><td>"+val[j].text+"</td></tr>"; //just printing level num? comment out
         }
-      }else{
-        // str += "<tr><td>"+val[j].text+"</td></tr>"; //just printing level num? comment out
       }
     }
     str += "</tr></tbody></table>"
