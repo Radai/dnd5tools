@@ -133,9 +133,9 @@ function itemSubTable(val){
   if(val.attack){
     str += "<tr><td><i>"+val.attack+"</i></td></tr>";
   }
-  if(val._level){ //primarily for autolevel stuffs
+  if(val.level){ //primarily for autolevel stuffs
     // str += "<table><tbody><tr><th>"+k.toTitleCase()+":</th><tr><table><tbody><tr>"
-    str += "<table><tbody><tr><th>Level:"+val._level+"</th><tr><table><tbody><tr>"
+    str += "<table><tbody><tr><th>Level:"+val.level+"</th><tr><table><tbody><tr>"
     for(var j in val){
       if(typeof val[j] == "object"){
         for(var l in val[j]){ // print name and text, if text is array, loop over that
