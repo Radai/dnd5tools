@@ -176,9 +176,13 @@ function itemSubTable(val){
     // str += "<table><tbody><tr><th>"+k.toTitleCase()+":</th><tr><table><tbody><tr>"
     str += "<table><tbody><tr><th><b>Level: "+val.level+"</b></th><tr><table><tbody><tr>"
     if(val.feature.name){
-      str += "<tr><td><b><i>"+val.feature.name+"</i></b></td>";
-      for(var t in val.feature.text){
-        str += "<tr><td>"+val.feature.text[t]+"</td></tr>";
+      str += "<tr><td><b><i><small>"+val.feature.name+"</small></i></b></td>";
+      if(Array.isArray(val.feature.text)){
+        for(var t in val.feature.text){
+          str += "<tr><td>"+val.feature.text[t]+"</td></tr>";
+        }
+      }else{
+        str += "<tr><td>"+val.feature.text+"</td></tr>";
       }
       str+="</tr>"
     }
@@ -191,7 +195,7 @@ function itemSubTable(val){
                 str += "<tr><td>"+val[j][l].text[t]+"</td></tr>";
               }
             }else if (val[j][l].name && val[j][l].text){
-              str += "<tr><td><b><i>"+val[j][l].name+"</i></b></td></tr></tr><td>"+val[j][l].text+"</td></tr>";
+              str += "<tr><td><b><i><small>"+val[j][l].name+"</small></i></b></td></tr></tr><td>"+val[j][l].text+"</td></tr>";
             }
           }
         }else{
