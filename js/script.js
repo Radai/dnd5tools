@@ -91,8 +91,13 @@ function createCard(info){
   }else {
     var spelltable;
     if(info.autolevel && info.autolevel[0].slots){
-      spelltable = $('<table class="table table-responsive table-striped table-hover"><thead><tr><th>Level</th><th>Cantrips</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead><tbody></tbody></table>')
-      for(var i = 6; i < info["autolevel"][0].slots.split(',').length; i++){
+      spelltable = $('<table class="table table-responsive table-striped table-hover"><thead><tr><th>Level</th><th>Cantrips</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead><tbody></tbody></table>')
+      var slots;
+      if(info.autolevel[0].slots.optional)
+        slots = info.autolevel[0].slots.text;
+      else
+        slots = info["autolevel"][0].slots;
+      for(var i = 5; i < slots.split(',').length; i++){
         $(spelltable).find('thead tr').append(`<th>${i}</th>`)
       }
     }
@@ -115,10 +120,15 @@ function createCard(info){
           for(var levelslots in info[data]){
             if(info[data][levelslots].slots){ //this is a spell slot descriptor
               inChar = true;
-              var slots = info[data][levelslots].slots.split(',');
-
-              var optional = slots.length > 6 ? `<td class='col-xs-1'>${slots[6]}</td class='col-xs-1'><td class='col-xs-1'>${slots[7]}</td class='col-xs-1'><td class='col-xs-1'>${slots[8]}</td class='col-xs-1'><td class='col-xs-1'>${slots[9]}</td class='col-xs-1'>` : '';
-              $(spelltable).find('tbody').append(`<tr><th class='col-xs-1'>${info[data][levelslots].level}</th><td class='col-xs-1'>${slots[0]}</td class='col-xs-1'><td class='col-xs-1'>${slots[1]}</td class='col-xs-1'><td class='col-xs-1'>${slots[2]}</td class='col-xs-1'><td class='col-xs-1'>${slots[3]}</td class='col-xs-1'><td class='col-xs-1'>${slots[4]}</td class='col-xs-1'><td class='col-xs-1'>${slots[5]}</td class='col-xs-1'>${optional}</tr>`)
+              var slots;
+              if(info.autolevel[0].slots.optional)
+                slots = info[data][levelslots].slots.text;
+              else
+                slots = info[data][levelslots].slots;
+              slots = slots.split(',');
+              var optional = slots.length > 6 ? `<td class='col-xs-1'>${slots[6]}</td><td class='col-xs-1'>${slots[7]}</td><td class='col-xs-1'>${slots[8]}</td><td class='col-xs-1'>${slots[9]}</td>` : '';
+              var optional5 = slots.length > 5 ? `<td class='col-xs-1'>${slots[5]}</td>` : '';
+              $(spelltable).find('tbody').append(`<tr><th class='col-xs-1'>${info[data][levelslots].level}</th><td class='col-xs-1'>${slots[0]}</td class='col-xs-1'><td class='col-xs-1'>${slots[1]}</td><td class='col-xs-1'>${slots[2]}</td><td class='col-xs-1'>${slots[3]}</td><td class='col-xs-1'>${slots[4]}</td>${optional5}${optional}</tr>`)
             }
           }
           if(inChar)
