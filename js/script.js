@@ -504,7 +504,7 @@ function setupTA(){
     templates: {
       header: '<h4 id="queryheader">Rules</h4>'
     }
-  });
+  }).focus();
 }
 
 function substringMatcher(strs){
