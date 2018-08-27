@@ -4,6 +4,6 @@
 Search D&amp;D5e Compendium
 </Description>
 <InputEncoding>UTF-8</InputEncoding>
-<Image width="16" height="16" type="image/x-icon">/favicon.ico</Image>
-<Url type="text/html" method="get" template="http://radai.github.io/dnd5tools/?q={searchTerms}"/>
+<Image width="16" height="16" type="image/x-icon">http://radai.github.io/dnd5tools/favicon.ico</Image>
+<Url type="text/html" template="http://radai.github.io/dnd5tools/?q={searchTerms}"></Url>
 </OpenSearchDescription>
