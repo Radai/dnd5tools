@@ -53,6 +53,7 @@ function init(data){
   //grab query params from URL, if someone linked you to a thing
   var q = decodeURI(location.search.substring(3)); // format: ?q=  - this is stripped out
   if(q != ""){
+    q=q.toTitleCase();
     $('.typeahead').typeahead('val', q);
     createCard(getInfo(q));
   }
