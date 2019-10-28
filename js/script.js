@@ -54,7 +54,7 @@ function init(data){
   var q = decodeURI(location.search.substring(3)); // format: ?q=  - this is stripped out
   if(q != ""){
     q=q.toTitleCase();
-    q=q.replace('+', '%20');
+    q=q.replace(/+/g, '%20');
     $('.typeahead').typeahead('val', q);
     createCard(getInfo(q));
   }
@@ -554,7 +554,7 @@ function getInfo(sug){
 
   for(var type in compendium){
     for(var data in compendium[type]){
-      if(compendium[type][data].name == sug){
+      if(compendium[type][data].name.localeCompare(sug, undefined, { sensitivity: 'base' }) === 0) {
         compendium[type][data].type = type;
         return compendium[type][data];
       }
