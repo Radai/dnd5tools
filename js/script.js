@@ -54,7 +54,6 @@ function init(data){
   var q = decodeURI(location.search.substring(3)); // format: ?q=  - this is stripped out
   if(q != ""){
     q=q.toTitleCase();
-    q=q.replace(/\+/g, '%20');
     $('.typeahead').typeahead('val', q);
     createCard(getInfo(q));
   }
