@@ -228,6 +228,11 @@ function createMonsterCard(monster){
   if (monster.ac) str += printMonsterStat("Armor Class", monster.ac);
   if (monster.hp) str += printMonsterStat("Hit Points", monster.hp);
   if (monster.speed) str += printMonsterStat("Speed", monster.speed);
+  if (monster.origin) { 
+    var opts = monster.origin.split(/,(?![^(]*\))/);
+    if (opts[0]) str += printMonsterStat("Type", opts[0].toTitleCase());
+    if (opts[1]) str += printMonsterStat("Source", opts[1].toTitleCase());
+  }
   str += "<hr>";
 
   //statblock
@@ -554,6 +559,8 @@ function getInfo(sug){
   for(var type in compendium){
     for(var data in compendium[type]){
       if(compendium[type][data].name.localeCompare(sug, undefined, { sensitivity: 'base' }) === 0) {
+        if(compendium[type][data].type)
+          compendium[type][data].origin = compendium[type][data].type;
         compendium[type][data].type = type;
         return compendium[type][data];
       }
